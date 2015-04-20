@@ -1,0 +1,10 @@
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.csprojResolveAssemblyReference.cache
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.EmployeeInterface.resources
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.Properties.Resources.resources
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.csproj.GenerateResource.Cache
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\bin\Debug\EmployeeInterface.exe.config
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\bin\Debug\EmployeeInterface.exe
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\bin\Debug\EmployeeInterface.pdb
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.exe
+c:\users\joe\documents\visual studio 2013\Projects\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.pdb
+C:\Users\Joe\Documents\Visual Studio 2013\Projects\EmployeeInterface\EmployeeInterface\bin\Debug\MySql.Data.dll
