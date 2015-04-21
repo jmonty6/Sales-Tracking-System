@@ -37,7 +37,12 @@ namespace EmployeeInterface
 
         private void EmployeeInterface_Load(object sender, EventArgs e)
         {
-
+												Authentication login = new Authentication();
+												login.ShowDialog();
+												if (!login.isValid())
+												{
+																Dispose();
+												}
         }
 
         private void customerSearchButton_Click(object sender, EventArgs e)
