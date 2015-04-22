@@ -20,11 +20,6 @@ namespace EmployeeInterface
         private List<string> noteList;
         private List<Item> itemList;
 
-        public Quote()
-        {
-
-        }
-
         public Quote(string qName, string em, string sName, int disc, int tPrice, bool sanct, 
             string custName, List<string> sNotes, List<Item> iList)
         {
