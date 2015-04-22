@@ -17,12 +17,7 @@ namespace EmployeeInterface
 		private bool valid = false;
 		private int counter = 0;
 
-<<<<<<< HEAD
-												//connection string and connect to the db
-												string strConn = "port=3306;server=50.165.81.108;user id=Kevin;password=ak4iulgjMwAShNX9rWsp;database=salestracking;";
-												connection = new MySqlConnection(strConn);
-								}
-=======
+
 		public Authentication()
 		{
 			InitializeComponent();
@@ -30,7 +25,6 @@ namespace EmployeeInterface
 			string strConn = "port=3306;server=50.165.81.108;user id=Kevin;password=ak4iulgjMwAShNX9rWsp;database=salestracking;";
 			connection = new MySqlConnection(strConn);
 		}
->>>>>>> origin/master
 
 		//Function: validate()
 		//Purpose:  Validates login credentials in order to access the employee interface
