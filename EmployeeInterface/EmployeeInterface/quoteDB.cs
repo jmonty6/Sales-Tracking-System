@@ -27,10 +27,10 @@ namespace EmployeeInterface
         {
             // assign values to connection variables
 
-            server = "50.165.81.10";
-            database = "salestracking";
-            user = "Kevin";
-            password = "ak4iulgjMwAShNX9rWsp";
+            server = "localhost";
+            database = "csci467";
+            user = "root";
+            password = "elle3tlui";
             
             // assemble string for connecting to database
 

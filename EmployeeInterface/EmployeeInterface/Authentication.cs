@@ -17,7 +17,16 @@ namespace EmployeeInterface
 		private bool valid = false;
 		private int counter = 0;
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+												//connection string and connect to the db
+												string strConn = "port=3306;server=localhost;user id=Kevin;password=ak4iulgjMwAShNX9rWsp;database=salestracking;";
+												connection = new MySqlConnection(strConn);
+								}
+=======
+>>>>>>> origin/master
 		public Authentication()
 		{
 			InitializeComponent();

@@ -22,11 +22,3 @@ C:\Users\SUPER\Documents\GitHub\Sales-Tracking-System\EmployeeInterface\Employee
 C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\bin\Debug\EmployeeInterface.exe.config
 C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.exe
 C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.pdb
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\bin\Debug\EmployeeInterface.exe
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\bin\Debug\EmployeeInterface.pdb
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\bin\Debug\MySql.Data.dll
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.csprojResolveAssemblyReference.cache
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.Authentication.resources
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.EmployeeInterface.resources
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.Properties.Resources.resources
-C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.csproj.GenerateResource.Cache
