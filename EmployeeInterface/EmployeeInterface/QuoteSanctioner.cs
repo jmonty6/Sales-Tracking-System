@@ -10,6 +10,8 @@ namespace EmployeeInterface
     class QuoteSanctioner
     {
 		private MySqlConnection connection;
+		private List<Quote> quoteList = new List<Quote>();
+		private Quote activeQuote;
 
 		//constructor for initialization
 		public QuoteSanctioner()
@@ -21,44 +23,21 @@ namespace EmployeeInterface
 
         public List<Quote> searchCustomer(string name)
         {
-			//quote list for searched customer
-			List<Quote> quotes = new List<Quote>();
+			getAllQuotes(name);
 
-			//query
-			string query = "SELECT custName FROM quote";
-			bool found = false;
-			int i = 0;
-
-			//list for results
-			List<string> rs = new List<string>();
-
-			//connect to the db and retrieve the data
-			if (this.connect())
-			{
-				//execute the query
-				MySqlCommand cmd = new MySqlCommand(query, connection);
-				MySqlDataReader dr = cmd.ExecuteReader();
-				while (dr.Read())
-				{
-					if ((dr["custName"] + "").Contains(name))
-					{
-						quotes.Add(new Quote(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6), dr.GetInt32(7)));
-					}
-				}
-			}
-			this.stopConnection();
-
-			return quotes;
+			return quoteList;
         }
 
-		public void searchQuote()
+		public List<Quote> searchQuote(string name)
         {
-            
+			getAllQuoteNames(name);
+
+			return quoteList;
         }
 
-		public void selectQuote()
+		public void selectQuote(Quote quote)
         {
-            
+			activeQuote = quote;
         }
 
 		public void submitQuote(string[] itemList, int[] priceList, string quoteName, string email, string salesPersonName, int discount, bool sanctioned)
@@ -90,6 +69,60 @@ namespace EmployeeInterface
 		private void stopConnection()
 		{
 			connection.Close();
+		}
+
+		//Function: void getAllQuotes(name)
+		//Purpose:  retrieves all of the quotes from the db via customer name
+		private void getAllQuotes(string name)
+		{
+			//query
+			string query = "SELECT * FROM quote";
+
+			//list for results
+			List<string> rs = new List<string>();
+
+			//connect to the db and retrieve the data
+			if (this.connect())
+			{
+				//execute the query
+				MySqlCommand cmd = new MySqlCommand(query, connection);
+				MySqlDataReader dr = cmd.ExecuteReader();
+				while (dr.Read())
+				{
+					//create new quotes using the data read
+					if ((dr["custName"] + "").Contains(name))
+						quoteList.Add(new Quote(dr.GetInt32(0), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6), dr.GetInt32(7)));
+				}
+				dr.Close();
+			}
+			this.stopConnection();
+		}
+
+		//Function: void getAllQuoteNames(name)
+		//Purpose:  retrieves all of the quotes from the db via quote name
+		private void getAllQuoteNames(string name)
+		{
+			//query
+			string query = "SELECT * FROM quote";
+
+			//list for results
+			List<string> rs = new List<string>();
+
+			//connect to the db and retrieve the data
+			if (this.connect())
+			{
+				//execute the query
+				MySqlCommand cmd = new MySqlCommand(query, connection);
+				MySqlDataReader dr = cmd.ExecuteReader();
+				while (dr.Read())
+				{
+					//create new quotes using the data read
+					if ((dr["name"] + "").Contains(name))
+						quoteList.Add(new Quote(dr.GetInt32(0), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6), dr.GetInt32(7)));
+				}
+				dr.Close();
+			}
+			this.stopConnection();
 		}
     }
 }

@@ -56,6 +56,26 @@ namespace EmployeeInterface
 
         }
 
+		public string getName()
+		{
+			return quoteName;
+		}
+
+		public string getCustName()
+		{
+			return customerName;
+		}
+
+		public string getEmail()
+		{
+			return email;
+		}
+
+		public int getId()
+		{
+			return quoteId;
+		}
+
 		public int getDiscount()
 		{
 			return discount;

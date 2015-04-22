@@ -129,10 +129,6 @@
 			// 
 			this.selectQuoteBox.BackColor = System.Drawing.SystemColors.Window;
 			this.selectQuoteBox.FormattingEnabled = true;
-			this.selectQuoteBox.Items.AddRange(new object[] {
-            "quote1",
-            "quote2",
-            "quote3"});
 			this.selectQuoteBox.Location = new System.Drawing.Point(19, 155);
 			this.selectQuoteBox.Name = "selectQuoteBox";
 			this.selectQuoteBox.Size = new System.Drawing.Size(341, 173);

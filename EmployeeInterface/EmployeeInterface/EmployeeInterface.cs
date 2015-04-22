@@ -19,6 +19,8 @@ namespace EmployeeInterface
 
 		private string[] itemList;
 		private int[] priceList;
+		private List<Quote> quoteList = new List<Quote>();
+		private List<string> quoteNames;
 
 		private QuoteSanctioner qs = new QuoteSanctioner();
 
@@ -47,27 +49,52 @@ namespace EmployeeInterface
 		private void EmployeeInterface_Load(object sender, EventArgs e)
 		{
 			Authentication login = new Authentication();
-			login.ShowDialog();
+			/*login.ShowDialog();
 			if (!login.isValid())
 			{
 				Dispose();
 			}
+			 */
 		}
 
         // Searches for a quote by customer name
 		private void customerSearchButton_Click(object sender, EventArgs e)
 		{
             // Pass the value in the customer search box to QuoteSanctioner
+			quoteNames = new List<string>();
 
-			qs.searchCustomer(customerSearchBox.Text);
+			if (customerSearchBox.Text != "")
+			{
+				quoteList = qs.searchCustomer(customerSearchBox.Text);
+				for (int i = 0; i < quoteList.Count; i++)
+				{
+					quoteNames.Add("" + quoteList[i].getCustName() + " : " + quoteList[i].getName());
+				}
+			}
+			else
+				MessageBox.Show("Please enter a name into the search box.");
+
+			selectQuoteBox.DataSource = quoteNames;
 		}
 
         // Searches for a quote by quote name
 		private void quoteSearchButton_Click(object sender, EventArgs e)
 		{
-            // Pass the value in the quote search box to QuoteSanctioner
+			// Pass the value in the quote search box to QuoteSanctioner
+			quoteNames = new List<string>();
 
-			//qs.searchQuote(quoteSearchBox.Text);
+			if (quoteSearchBox.Text != "")
+			{
+				quoteList = qs.searchQuote(quoteSearchBox.Text);
+				for (int i = 0; i < quoteList.Count; i++)
+				{
+					quoteNames.Add("" + quoteList[i].getCustName() + " : " + quoteList[i].getName());
+				}
+			}
+			else
+				MessageBox.Show("Please enter a name into the search box.");
+
+			selectQuoteBox.DataSource = quoteNames;
 		}
 
         // Displays the quote information for the selected quote
@@ -75,10 +102,14 @@ namespace EmployeeInterface
 		{
             if(selectQuoteBox.SelectedIndex > -1)
             {
-                qs.selectQuote();
+                qs.selectQuote(quoteList[selectQuoteBox.SelectedIndex]);
 
                 customerInfoBox.Visible = true;
                 quoteGroupBox.Visible = true;
+				quoteNameBox.Text = quoteList[selectQuoteBox.SelectedIndex].getName();
+				discountBox.Text = quoteList[selectQuoteBox.SelectedIndex].getDiscount() + "";
+				emailBox.Text = quoteList[selectQuoteBox.SelectedIndex].getEmail();
+				totalPriceBox.Text = quoteList[selectQuoteBox.SelectedIndex].getTotalPrice() + "";
 
                 this.Width = 1130;
                 this.Height = 670;
@@ -102,7 +133,7 @@ namespace EmployeeInterface
 			int discount = Int32.Parse(discountBox.Text);
 			bool sanctioned = SanctionBox.Checked;
 
-			QuoteSanctioner.submitQuote(itemList, priceList, quoteName, email, salesPersonName, discount, sanctioned);
+			qs.submitQuote(itemList, priceList, quoteName, email, salesPersonName, discount, sanctioned);
 		}
 
         // fills them item list with the text of any item boxes that are currently visible
