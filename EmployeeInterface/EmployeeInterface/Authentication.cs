@@ -19,7 +19,7 @@ namespace EmployeeInterface
 
 <<<<<<< HEAD
 												//connection string and connect to the db
-												string strConn = "port=3306;server=50.165.81.108;user id=Kevin;password=ak4iulgjMwAShNX9rWsp;database=salestracking;";
+												string strConn = "port=3306;server=localhost;user id=Kevin;password=ak4iulgjMwAShNX9rWsp;database=salestracking;";
 												connection = new MySqlConnection(strConn);
 								}
 =======
