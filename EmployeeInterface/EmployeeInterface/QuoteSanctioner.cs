@@ -9,12 +9,12 @@ namespace EmployeeInterface
 {
     class QuoteSanctioner
     {
-        internal static void searchCustomer()
+        internal static void searchCustomer(string customerName)
         {
 
         }
 
-        internal static void searchQuote()
+        internal static void searchQuote(string quoteName)
         {
             
         }

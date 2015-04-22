@@ -44,10 +44,10 @@
             this.quoteSearchLabel = new System.Windows.Forms.Label();
             this.customerSearchLabel = new System.Windows.Forms.Label();
             this.quoteGroupBox = new System.Windows.Forms.GroupBox();
+            this.SanctionBox = new System.Windows.Forms.CheckBox();
             this.totalPriceBox = new System.Windows.Forms.TextBox();
             this.totalPriceLabel = new System.Windows.Forms.Label();
             this.noteGroupBox = new System.Windows.Forms.GroupBox();
-            this.noteButton3 = new System.Windows.Forms.Button();
             this.noteButton2 = new System.Windows.Forms.Button();
             this.noteButton1 = new System.Windows.Forms.Button();
             this.noteBox3 = new System.Windows.Forms.TextBox();
@@ -55,7 +55,6 @@
             this.noteBox1 = new System.Windows.Forms.TextBox();
             this.noteLabel = new System.Windows.Forms.Label();
             this.itemGroupBox = new System.Windows.Forms.GroupBox();
-            this.itemButton8 = new System.Windows.Forms.Button();
             this.itemButton7 = new System.Windows.Forms.Button();
             this.itemButton6 = new System.Windows.Forms.Button();
             this.priceBox8 = new System.Windows.Forms.TextBox();
@@ -90,7 +89,15 @@
             this.custContactLabel = new System.Windows.Forms.Label();
             this.custAddressLabel = new System.Windows.Forms.Label();
             this.custNameLabel = new System.Windows.Forms.Label();
-            this.SanctionBox = new System.Windows.Forms.CheckBox();
+            this.itemButtonR8 = new System.Windows.Forms.Button();
+            this.itemButtonR7 = new System.Windows.Forms.Button();
+            this.itemButtonR6 = new System.Windows.Forms.Button();
+            this.itemButtonR5 = new System.Windows.Forms.Button();
+            this.itemButtonR4 = new System.Windows.Forms.Button();
+            this.itemButtonR3 = new System.Windows.Forms.Button();
+            this.itemButtonR2 = new System.Windows.Forms.Button();
+            this.noteButtonR3 = new System.Windows.Forms.Button();
+            this.noteButtonR2 = new System.Windows.Forms.Button();
             this.searchGroupBox.SuspendLayout();
             this.quoteGroupBox.SuspendLayout();
             this.noteGroupBox.SuspendLayout();
@@ -122,6 +129,10 @@
             // 
             this.selectQuoteBox.BackColor = System.Drawing.SystemColors.Window;
             this.selectQuoteBox.FormattingEnabled = true;
+            this.selectQuoteBox.Items.AddRange(new object[] {
+            "quote1",
+            "quote2",
+            "quote3"});
             this.selectQuoteBox.Location = new System.Drawing.Point(19, 155);
             this.selectQuoteBox.Name = "selectQuoteBox";
             this.selectQuoteBox.Size = new System.Drawing.Size(341, 173);
@@ -175,12 +186,13 @@
             // itemButton1
             // 
             this.itemButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton1.Location = new System.Drawing.Point(593, 40);
+            this.itemButton1.Location = new System.Drawing.Point(584, 40);
             this.itemButton1.Name = "itemButton1";
             this.itemButton1.Size = new System.Drawing.Size(20, 20);
             this.itemButton1.TabIndex = 11;
-            this.itemButton1.Text = "-";
+            this.itemButton1.Text = "+";
             this.itemButton1.UseVisualStyleBackColor = true;
+            this.itemButton1.Click += new System.EventHandler(this.itemButton1_Click);
             // 
             // searchGroupBox
             // 
@@ -269,6 +281,16 @@
             this.quoteGroupBox.Text = "Edit a Quote";
             this.quoteGroupBox.Visible = false;
             // 
+            // SanctionBox
+            // 
+            this.SanctionBox.AutoSize = true;
+            this.SanctionBox.Location = new System.Drawing.Point(510, 524);
+            this.SanctionBox.Name = "SanctionBox";
+            this.SanctionBox.Size = new System.Drawing.Size(119, 17);
+            this.SanctionBox.TabIndex = 44;
+            this.SanctionBox.Text = "Sanction this Quote";
+            this.SanctionBox.UseVisualStyleBackColor = true;
+            // 
             // totalPriceBox
             // 
             this.totalPriceBox.Location = new System.Drawing.Point(223, 567);
@@ -287,7 +309,8 @@
             // 
             // noteGroupBox
             // 
-            this.noteGroupBox.Controls.Add(this.noteButton3);
+            this.noteGroupBox.Controls.Add(this.noteButtonR3);
+            this.noteGroupBox.Controls.Add(this.noteButtonR2);
             this.noteGroupBox.Controls.Add(this.noteButton2);
             this.noteGroupBox.Controls.Add(this.noteButton1);
             this.noteGroupBox.Controls.Add(this.noteBox3);
@@ -300,42 +323,34 @@
             this.noteGroupBox.TabIndex = 41;
             this.noteGroupBox.TabStop = false;
             // 
-            // noteButton3
-            // 
-            this.noteButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noteButton3.Location = new System.Drawing.Point(593, 91);
-            this.noteButton3.Name = "noteButton3";
-            this.noteButton3.Size = new System.Drawing.Size(20, 20);
-            this.noteButton3.TabIndex = 38;
-            this.noteButton3.Text = "+";
-            this.noteButton3.UseVisualStyleBackColor = true;
-            this.noteButton3.Visible = false;
-            // 
             // noteButton2
             // 
             this.noteButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noteButton2.Location = new System.Drawing.Point(593, 66);
+            this.noteButton2.Location = new System.Drawing.Point(584, 65);
             this.noteButton2.Name = "noteButton2";
             this.noteButton2.Size = new System.Drawing.Size(20, 20);
             this.noteButton2.TabIndex = 37;
             this.noteButton2.Text = "+";
             this.noteButton2.UseVisualStyleBackColor = true;
+            this.noteButton2.Visible = false;
+            this.noteButton2.Click += new System.EventHandler(this.noteButton2_Click);
             // 
             // noteButton1
             // 
             this.noteButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noteButton1.Location = new System.Drawing.Point(593, 40);
+            this.noteButton1.Location = new System.Drawing.Point(584, 39);
             this.noteButton1.Name = "noteButton1";
             this.noteButton1.Size = new System.Drawing.Size(20, 20);
             this.noteButton1.TabIndex = 36;
-            this.noteButton1.Text = "-";
+            this.noteButton1.Text = "+";
             this.noteButton1.UseVisualStyleBackColor = true;
+            this.noteButton1.Click += new System.EventHandler(this.noteButton1_Click);
             // 
             // noteBox3
             // 
             this.noteBox3.Location = new System.Drawing.Point(33, 92);
             this.noteBox3.Name = "noteBox3";
-            this.noteBox3.Size = new System.Drawing.Size(554, 20);
+            this.noteBox3.Size = new System.Drawing.Size(545, 20);
             this.noteBox3.TabIndex = 32;
             this.noteBox3.Visible = false;
             // 
@@ -343,7 +358,7 @@
             // 
             this.noteBox2.Location = new System.Drawing.Point(33, 66);
             this.noteBox2.Name = "noteBox2";
-            this.noteBox2.Size = new System.Drawing.Size(554, 20);
+            this.noteBox2.Size = new System.Drawing.Size(545, 20);
             this.noteBox2.TabIndex = 31;
             this.noteBox2.Visible = false;
             // 
@@ -351,7 +366,7 @@
             // 
             this.noteBox1.Location = new System.Drawing.Point(33, 40);
             this.noteBox1.Name = "noteBox1";
-            this.noteBox1.Size = new System.Drawing.Size(554, 20);
+            this.noteBox1.Size = new System.Drawing.Size(545, 20);
             this.noteBox1.TabIndex = 30;
             // 
             // noteLabel
@@ -365,7 +380,13 @@
             // 
             // itemGroupBox
             // 
-            this.itemGroupBox.Controls.Add(this.itemButton8);
+            this.itemGroupBox.Controls.Add(this.itemButtonR8);
+            this.itemGroupBox.Controls.Add(this.itemButtonR7);
+            this.itemGroupBox.Controls.Add(this.itemButtonR6);
+            this.itemGroupBox.Controls.Add(this.itemButtonR5);
+            this.itemGroupBox.Controls.Add(this.itemButtonR4);
+            this.itemGroupBox.Controls.Add(this.itemButtonR3);
+            this.itemGroupBox.Controls.Add(this.itemButtonR2);
             this.itemGroupBox.Controls.Add(this.itemButton7);
             this.itemGroupBox.Controls.Add(this.itemButton6);
             this.itemGroupBox.Controls.Add(this.priceBox8);
@@ -397,42 +418,33 @@
             this.itemGroupBox.TabIndex = 40;
             this.itemGroupBox.TabStop = false;
             // 
-            // itemButton8
-            // 
-            this.itemButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton8.Location = new System.Drawing.Point(593, 221);
-            this.itemButton8.Name = "itemButton8";
-            this.itemButton8.Size = new System.Drawing.Size(20, 20);
-            this.itemButton8.TabIndex = 35;
-            this.itemButton8.Text = "+";
-            this.itemButton8.UseVisualStyleBackColor = true;
-            this.itemButton8.Visible = false;
-            // 
             // itemButton7
             // 
             this.itemButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton7.Location = new System.Drawing.Point(593, 196);
+            this.itemButton7.Location = new System.Drawing.Point(584, 196);
             this.itemButton7.Name = "itemButton7";
             this.itemButton7.Size = new System.Drawing.Size(20, 20);
             this.itemButton7.TabIndex = 34;
             this.itemButton7.Text = "+";
             this.itemButton7.UseVisualStyleBackColor = true;
             this.itemButton7.Visible = false;
+            this.itemButton7.Click += new System.EventHandler(this.itemButton7_Click);
             // 
             // itemButton6
             // 
             this.itemButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton6.Location = new System.Drawing.Point(593, 170);
+            this.itemButton6.Location = new System.Drawing.Point(584, 170);
             this.itemButton6.Name = "itemButton6";
             this.itemButton6.Size = new System.Drawing.Size(20, 20);
             this.itemButton6.TabIndex = 33;
             this.itemButton6.Text = "+";
             this.itemButton6.UseVisualStyleBackColor = true;
             this.itemButton6.Visible = false;
+            this.itemButton6.Click += new System.EventHandler(this.itemButton6_Click);
             // 
             // priceBox8
             // 
-            this.priceBox8.Location = new System.Drawing.Point(480, 222);
+            this.priceBox8.Location = new System.Drawing.Point(471, 222);
             this.priceBox8.Name = "priceBox8";
             this.priceBox8.Size = new System.Drawing.Size(107, 20);
             this.priceBox8.TabIndex = 32;
@@ -440,7 +452,7 @@
             // 
             // priceBox7
             // 
-            this.priceBox7.Location = new System.Drawing.Point(480, 196);
+            this.priceBox7.Location = new System.Drawing.Point(471, 196);
             this.priceBox7.Name = "priceBox7";
             this.priceBox7.Size = new System.Drawing.Size(107, 20);
             this.priceBox7.TabIndex = 31;
@@ -448,7 +460,7 @@
             // 
             // priceBox6
             // 
-            this.priceBox6.Location = new System.Drawing.Point(480, 170);
+            this.priceBox6.Location = new System.Drawing.Point(471, 170);
             this.priceBox6.Name = "priceBox6";
             this.priceBox6.Size = new System.Drawing.Size(107, 20);
             this.priceBox6.TabIndex = 30;
@@ -481,49 +493,54 @@
             // itemButton5
             // 
             this.itemButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton5.Location = new System.Drawing.Point(593, 143);
+            this.itemButton5.Location = new System.Drawing.Point(584, 143);
             this.itemButton5.Name = "itemButton5";
             this.itemButton5.Size = new System.Drawing.Size(20, 20);
             this.itemButton5.TabIndex = 26;
             this.itemButton5.Text = "+";
             this.itemButton5.UseVisualStyleBackColor = true;
             this.itemButton5.Visible = false;
+            this.itemButton5.Click += new System.EventHandler(this.itemButton5_Click);
             // 
             // itemButton4
             // 
             this.itemButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton4.Location = new System.Drawing.Point(593, 118);
+            this.itemButton4.Location = new System.Drawing.Point(584, 118);
             this.itemButton4.Name = "itemButton4";
             this.itemButton4.Size = new System.Drawing.Size(20, 20);
             this.itemButton4.TabIndex = 25;
             this.itemButton4.Text = "+";
             this.itemButton4.UseVisualStyleBackColor = true;
             this.itemButton4.Visible = false;
+            this.itemButton4.Click += new System.EventHandler(this.itemButton4_Click);
             // 
             // itemButton3
             // 
             this.itemButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton3.Location = new System.Drawing.Point(593, 92);
+            this.itemButton3.Location = new System.Drawing.Point(584, 92);
             this.itemButton3.Name = "itemButton3";
             this.itemButton3.Size = new System.Drawing.Size(20, 20);
             this.itemButton3.TabIndex = 24;
             this.itemButton3.Text = "+";
             this.itemButton3.UseVisualStyleBackColor = true;
             this.itemButton3.Visible = false;
+            this.itemButton3.Click += new System.EventHandler(this.itemButton3_Click);
             // 
             // itemButton2
             // 
             this.itemButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemButton2.Location = new System.Drawing.Point(593, 66);
+            this.itemButton2.Location = new System.Drawing.Point(584, 66);
             this.itemButton2.Name = "itemButton2";
             this.itemButton2.Size = new System.Drawing.Size(20, 20);
             this.itemButton2.TabIndex = 23;
             this.itemButton2.Text = "+";
             this.itemButton2.UseVisualStyleBackColor = true;
+            this.itemButton2.Visible = false;
+            this.itemButton2.Click += new System.EventHandler(this.itemButton2_Click);
             // 
             // priceBox5
             // 
-            this.priceBox5.Location = new System.Drawing.Point(480, 144);
+            this.priceBox5.Location = new System.Drawing.Point(471, 144);
             this.priceBox5.Name = "priceBox5";
             this.priceBox5.Size = new System.Drawing.Size(107, 20);
             this.priceBox5.TabIndex = 22;
@@ -531,7 +548,7 @@
             // 
             // priceBox4
             // 
-            this.priceBox4.Location = new System.Drawing.Point(480, 118);
+            this.priceBox4.Location = new System.Drawing.Point(471, 118);
             this.priceBox4.Name = "priceBox4";
             this.priceBox4.Size = new System.Drawing.Size(107, 20);
             this.priceBox4.TabIndex = 21;
@@ -539,7 +556,7 @@
             // 
             // priceBox3
             // 
-            this.priceBox3.Location = new System.Drawing.Point(480, 92);
+            this.priceBox3.Location = new System.Drawing.Point(471, 92);
             this.priceBox3.Name = "priceBox3";
             this.priceBox3.Size = new System.Drawing.Size(107, 20);
             this.priceBox3.TabIndex = 20;
@@ -547,7 +564,7 @@
             // 
             // priceBox2
             // 
-            this.priceBox2.Location = new System.Drawing.Point(480, 66);
+            this.priceBox2.Location = new System.Drawing.Point(471, 66);
             this.priceBox2.Name = "priceBox2";
             this.priceBox2.Size = new System.Drawing.Size(107, 20);
             this.priceBox2.TabIndex = 19;
@@ -587,7 +604,7 @@
             // 
             // priceBox1
             // 
-            this.priceBox1.Location = new System.Drawing.Point(480, 40);
+            this.priceBox1.Location = new System.Drawing.Point(471, 40);
             this.priceBox1.Name = "priceBox1";
             this.priceBox1.Size = new System.Drawing.Size(107, 20);
             this.priceBox1.TabIndex = 14;
@@ -595,7 +612,7 @@
             // priceLabel
             // 
             this.priceLabel.AutoSize = true;
-            this.priceLabel.Location = new System.Drawing.Point(477, 24);
+            this.priceLabel.Location = new System.Drawing.Point(468, 24);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(31, 13);
             this.priceLabel.TabIndex = 13;
@@ -719,21 +736,119 @@
             this.custNameLabel.Text = "IBM Corporation";
             this.custNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // SanctionBox
+            // itemButtonR8
             // 
-            this.SanctionBox.AutoSize = true;
-            this.SanctionBox.Location = new System.Drawing.Point(510, 524);
-            this.SanctionBox.Name = "SanctionBox";
-            this.SanctionBox.Size = new System.Drawing.Size(119, 17);
-            this.SanctionBox.TabIndex = 44;
-            this.SanctionBox.Text = "Sanction this Quote";
-            this.SanctionBox.UseVisualStyleBackColor = true;
+            this.itemButtonR8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemButtonR8.Location = new System.Drawing.Point(610, 221);
+            this.itemButtonR8.Name = "itemButtonR8";
+            this.itemButtonR8.Size = new System.Drawing.Size(20, 20);
+            this.itemButtonR8.TabIndex = 43;
+            this.itemButtonR8.Text = "-";
+            this.itemButtonR8.UseVisualStyleBackColor = true;
+            this.itemButtonR8.Visible = false;
+            this.itemButtonR8.Click += new System.EventHandler(this.itemButtonR8_Click);
+            // 
+            // itemButtonR7
+            // 
+            this.itemButtonR7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemButtonR7.Location = new System.Drawing.Point(610, 196);
+            this.itemButtonR7.Name = "itemButtonR7";
+            this.itemButtonR7.Size = new System.Drawing.Size(20, 20);
+            this.itemButtonR7.TabIndex = 42;
+            this.itemButtonR7.Text = "-";
+            this.itemButtonR7.UseVisualStyleBackColor = true;
+            this.itemButtonR7.Visible = false;
+            this.itemButtonR7.Click += new System.EventHandler(this.itemButtonR7_Click);
+            // 
+            // itemButtonR6
+            // 
+            this.itemButtonR6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemButtonR6.Location = new System.Drawing.Point(610, 170);
+            this.itemButtonR6.Name = "itemButtonR6";
+            this.itemButtonR6.Size = new System.Drawing.Size(20, 20);
+            this.itemButtonR6.TabIndex = 41;
+            this.itemButtonR6.Text = "-";
+            this.itemButtonR6.UseVisualStyleBackColor = true;
+            this.itemButtonR6.Visible = false;
+            this.itemButtonR6.Click += new System.EventHandler(this.itemButtonR6_Click);
+            // 
+            // itemButtonR5
+            // 
+            this.itemButtonR5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemButtonR5.Location = new System.Drawing.Point(610, 143);
+            this.itemButtonR5.Name = "itemButtonR5";
+            this.itemButtonR5.Size = new System.Drawing.Size(20, 20);
+            this.itemButtonR5.TabIndex = 40;
+            this.itemButtonR5.Text = "-";
+            this.itemButtonR5.UseVisualStyleBackColor = true;
+            this.itemButtonR5.Visible = false;
+            this.itemButtonR5.Click += new System.EventHandler(this.itemButtonR5_Click);
+            // 
+            // itemButtonR4
+            // 
+            this.itemButtonR4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemButtonR4.Location = new System.Drawing.Point(610, 118);
+            this.itemButtonR4.Name = "itemButtonR4";
+            this.itemButtonR4.Size = new System.Drawing.Size(20, 20);
+            this.itemButtonR4.TabIndex = 39;
+            this.itemButtonR4.Text = "-";
+            this.itemButtonR4.UseVisualStyleBackColor = true;
+            this.itemButtonR4.Visible = false;
+            this.itemButtonR4.Click += new System.EventHandler(this.itemButtonR4_Click);
+            // 
+            // itemButtonR3
+            // 
+            this.itemButtonR3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemButtonR3.Location = new System.Drawing.Point(610, 92);
+            this.itemButtonR3.Name = "itemButtonR3";
+            this.itemButtonR3.Size = new System.Drawing.Size(20, 20);
+            this.itemButtonR3.TabIndex = 38;
+            this.itemButtonR3.Text = "-";
+            this.itemButtonR3.UseVisualStyleBackColor = true;
+            this.itemButtonR3.Visible = false;
+            this.itemButtonR3.Click += new System.EventHandler(this.itemButtonR3_Click);
+            // 
+            // itemButtonR2
+            // 
+            this.itemButtonR2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemButtonR2.Location = new System.Drawing.Point(610, 66);
+            this.itemButtonR2.Name = "itemButtonR2";
+            this.itemButtonR2.Size = new System.Drawing.Size(20, 20);
+            this.itemButtonR2.TabIndex = 37;
+            this.itemButtonR2.Text = "-";
+            this.itemButtonR2.UseVisualStyleBackColor = true;
+            this.itemButtonR2.Visible = false;
+            this.itemButtonR2.Click += new System.EventHandler(this.itemButtonR2_Click);
+            // 
+            // noteButtonR3
+            // 
+            this.noteButtonR3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noteButtonR3.Location = new System.Drawing.Point(610, 92);
+            this.noteButtonR3.Name = "noteButtonR3";
+            this.noteButtonR3.Size = new System.Drawing.Size(20, 20);
+            this.noteButtonR3.TabIndex = 39;
+            this.noteButtonR3.Text = "-";
+            this.noteButtonR3.UseVisualStyleBackColor = true;
+            this.noteButtonR3.Visible = false;
+            this.noteButtonR3.Click += new System.EventHandler(this.noteButtonR3_Click);
+            // 
+            // noteButtonR2
+            // 
+            this.noteButtonR2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noteButtonR2.Location = new System.Drawing.Point(610, 65);
+            this.noteButtonR2.Name = "noteButtonR2";
+            this.noteButtonR2.Size = new System.Drawing.Size(20, 20);
+            this.noteButtonR2.TabIndex = 38;
+            this.noteButtonR2.Text = "-";
+            this.noteButtonR2.UseVisualStyleBackColor = true;
+            this.noteButtonR2.Visible = false;
+            this.noteButtonR2.Click += new System.EventHandler(this.noteButtonR2_Click);
             // 
             // EmployeeInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 632);
+            this.ClientSize = new System.Drawing.Size(404, 402);
             this.Controls.Add(this.customerInfoBox);
             this.Controls.Add(this.quoteGroupBox);
             this.Controls.Add(this.searchGroupBox);
@@ -789,13 +904,11 @@
         private System.Windows.Forms.TextBox totalPriceBox;
         private System.Windows.Forms.Label totalPriceLabel;
         private System.Windows.Forms.GroupBox noteGroupBox;
-        private System.Windows.Forms.Button noteButton3;
         private System.Windows.Forms.Button noteButton2;
         private System.Windows.Forms.Button noteButton1;
         private System.Windows.Forms.TextBox noteBox3;
         private System.Windows.Forms.TextBox noteBox2;
         private System.Windows.Forms.GroupBox itemGroupBox;
-        private System.Windows.Forms.Button itemButton8;
         private System.Windows.Forms.Button itemButton7;
         private System.Windows.Forms.Button itemButton6;
         private System.Windows.Forms.TextBox priceBox8;
@@ -820,5 +933,14 @@
         private System.Windows.Forms.Label custAddressLabel;
         private System.Windows.Forms.Label custNameLabel;
         private System.Windows.Forms.CheckBox SanctionBox;
+        private System.Windows.Forms.Button itemButtonR8;
+        private System.Windows.Forms.Button itemButtonR7;
+        private System.Windows.Forms.Button itemButtonR6;
+        private System.Windows.Forms.Button itemButtonR5;
+        private System.Windows.Forms.Button itemButtonR4;
+        private System.Windows.Forms.Button itemButtonR3;
+        private System.Windows.Forms.Button itemButtonR2;
+        private System.Windows.Forms.Button noteButtonR3;
+        private System.Windows.Forms.Button noteButtonR2;
     }
 }
