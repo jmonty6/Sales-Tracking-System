@@ -9,9 +9,10 @@ namespace EmployeeInterface
 {
     class Quote
     {
+		private int quoteId;
         private string quoteName;
         private string email;
-        private string salesPersonName;
+        private int salesPersonId;
         private int discount;
         private int totalPrice;
         private bool sanctioned;
@@ -20,12 +21,27 @@ namespace EmployeeInterface
         private List<string> noteList;
         private List<Item> itemList;
 
-        public Quote(string qName, string em, string sName, int disc, int tPrice, bool sanct, 
+		public Quote(int id, string qName, string custName, string em, int sId, int disc, int tPrice, int sanct)
+		{
+			quoteId = id;
+			quoteName = qName;
+			email = em;
+			salesPersonId = sId;
+			discount = disc;
+			totalPrice = tPrice;
+			if (sanct == 1)
+				sanctioned = true;
+			else
+				sanctioned = false;
+			customerName = custName;
+		}
+
+        public Quote(string qName, string em, int sId, int disc, int tPrice, bool sanct, 
             string custName, List<string> sNotes, List<Item> iList)
         {
             quoteName = qName;
             email = em;
-            salesPersonName = sName;
+            salesPersonId = sId;
             discount = disc;
             totalPrice = tPrice;
             sanctioned = sanct;
