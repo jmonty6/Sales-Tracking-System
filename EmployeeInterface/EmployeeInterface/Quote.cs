@@ -44,5 +44,20 @@ namespace EmployeeInterface
         {
 
         }
+
+								public int getDiscount()
+								{
+												return discount;
+								}
+
+								public int getTotalPrice()
+								{
+												return totalPrice;
+								}
+
+								public bool getSanctioned()
+								{
+												return sanctioned;
+								}
     }
 }
