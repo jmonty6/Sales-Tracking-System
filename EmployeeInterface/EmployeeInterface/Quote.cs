@@ -12,6 +12,7 @@ namespace EmployeeInterface
 		private int quoteId;
         private string quoteName;
         private string email;
+		private string salesPersonName;
         private int salesPersonId;
         private int discount;
         private int totalPrice;
@@ -89,6 +90,16 @@ namespace EmployeeInterface
 		public bool getSanctioned()
 		{
 			return sanctioned;
+		}
+
+		public List<Item> getItemList()
+		{
+			return itemList;
+		}
+
+		public void setQuoteItems(List<Item> items)
+		{
+			itemList = items;
 		}
     }
 }

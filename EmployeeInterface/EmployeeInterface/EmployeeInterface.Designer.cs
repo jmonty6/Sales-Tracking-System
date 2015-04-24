@@ -91,13 +91,13 @@
 			this.emailLabel = new System.Windows.Forms.Label();
 			this.emailBox = new System.Windows.Forms.TextBox();
 			this.salesNameLabel = new System.Windows.Forms.Label();
-			this.salesNameBox = new System.Windows.Forms.TextBox();
 			this.deleteQuoteButton = new System.Windows.Forms.Button();
 			this.submitQuoteButton = new System.Windows.Forms.Button();
 			this.customerInfoBox = new System.Windows.Forms.GroupBox();
 			this.custContactLabel = new System.Windows.Forms.Label();
 			this.custAddressLabel = new System.Windows.Forms.Label();
 			this.custNameLabel = new System.Windows.Forms.Label();
+			this.salesNameBox = new System.Windows.Forms.TextBox();
 			this.searchGroupBox.SuspendLayout();
 			this.quoteGroupBox.SuspendLayout();
 			this.noteGroupBox.SuspendLayout();
@@ -178,6 +178,7 @@
 			this.itemBox1.Name = "itemBox1";
 			this.itemBox1.Size = new System.Drawing.Size(363, 20);
 			this.itemBox1.TabIndex = 10;
+			this.itemBox1.TextChanged += new System.EventHandler(this.itemBox1_TextChanged);
 			// 
 			// itemButton1
 			// 
@@ -553,6 +554,7 @@
 			this.priceBox8.Size = new System.Drawing.Size(107, 20);
 			this.priceBox8.TabIndex = 32;
 			this.priceBox8.Visible = false;
+			this.priceBox8.TextChanged += new System.EventHandler(this.priceBox8_TextChanged);
 			// 
 			// priceBox7
 			// 
@@ -561,6 +563,7 @@
 			this.priceBox7.Size = new System.Drawing.Size(107, 20);
 			this.priceBox7.TabIndex = 31;
 			this.priceBox7.Visible = false;
+			this.priceBox7.TextChanged += new System.EventHandler(this.priceBox7_TextChanged);
 			// 
 			// priceBox6
 			// 
@@ -569,6 +572,7 @@
 			this.priceBox6.Size = new System.Drawing.Size(107, 20);
 			this.priceBox6.TabIndex = 30;
 			this.priceBox6.Visible = false;
+			this.priceBox6.TextChanged += new System.EventHandler(this.priceBox6_TextChanged);
 			// 
 			// itemBox8
 			// 
@@ -577,6 +581,7 @@
 			this.itemBox8.Size = new System.Drawing.Size(363, 20);
 			this.itemBox8.TabIndex = 29;
 			this.itemBox8.Visible = false;
+			this.itemBox8.TextChanged += new System.EventHandler(this.itemBox8_TextChanged);
 			// 
 			// itemBox7
 			// 
@@ -585,6 +590,7 @@
 			this.itemBox7.Size = new System.Drawing.Size(363, 20);
 			this.itemBox7.TabIndex = 28;
 			this.itemBox7.Visible = false;
+			this.itemBox7.TextChanged += new System.EventHandler(this.itemBox7_TextChanged);
 			// 
 			// itemBox6
 			// 
@@ -593,6 +599,7 @@
 			this.itemBox6.Size = new System.Drawing.Size(363, 20);
 			this.itemBox6.TabIndex = 27;
 			this.itemBox6.Visible = false;
+			this.itemBox6.TextChanged += new System.EventHandler(this.itemBox6_TextChanged);
 			// 
 			// itemButton5
 			// 
@@ -649,6 +656,7 @@
 			this.priceBox5.Size = new System.Drawing.Size(107, 20);
 			this.priceBox5.TabIndex = 22;
 			this.priceBox5.Visible = false;
+			this.priceBox5.TextChanged += new System.EventHandler(this.priceBox5_TextChanged);
 			// 
 			// priceBox4
 			// 
@@ -657,6 +665,7 @@
 			this.priceBox4.Size = new System.Drawing.Size(107, 20);
 			this.priceBox4.TabIndex = 21;
 			this.priceBox4.Visible = false;
+			this.priceBox4.TextChanged += new System.EventHandler(this.priceBox4_TextChanged);
 			// 
 			// priceBox3
 			// 
@@ -665,6 +674,7 @@
 			this.priceBox3.Size = new System.Drawing.Size(107, 20);
 			this.priceBox3.TabIndex = 20;
 			this.priceBox3.Visible = false;
+			this.priceBox3.TextChanged += new System.EventHandler(this.priceBox3_TextChanged);
 			// 
 			// priceBox2
 			// 
@@ -673,6 +683,7 @@
 			this.priceBox2.Size = new System.Drawing.Size(107, 20);
 			this.priceBox2.TabIndex = 19;
 			this.priceBox2.Visible = false;
+			this.priceBox2.TextChanged += new System.EventHandler(this.priceBox2_TextChanged);
 			// 
 			// itemBox5
 			// 
@@ -681,6 +692,7 @@
 			this.itemBox5.Size = new System.Drawing.Size(363, 20);
 			this.itemBox5.TabIndex = 18;
 			this.itemBox5.Visible = false;
+			this.itemBox5.TextChanged += new System.EventHandler(this.itemBox5_TextChanged);
 			// 
 			// itemBox4
 			// 
@@ -689,6 +701,7 @@
 			this.itemBox4.Size = new System.Drawing.Size(363, 20);
 			this.itemBox4.TabIndex = 17;
 			this.itemBox4.Visible = false;
+			this.itemBox4.TextChanged += new System.EventHandler(this.itemBox4_TextChanged);
 			// 
 			// itemBox3
 			// 
@@ -697,6 +710,7 @@
 			this.itemBox3.Size = new System.Drawing.Size(363, 20);
 			this.itemBox3.TabIndex = 16;
 			this.itemBox3.Visible = false;
+			this.itemBox3.TextChanged += new System.EventHandler(this.itemBox3_TextChanged);
 			// 
 			// itemBox2
 			// 
@@ -705,6 +719,7 @@
 			this.itemBox2.Size = new System.Drawing.Size(363, 20);
 			this.itemBox2.TabIndex = 15;
 			this.itemBox2.Visible = false;
+			this.itemBox2.TextChanged += new System.EventHandler(this.itemBox2_TextChanged);
 			// 
 			// priceBox1
 			// 
@@ -712,6 +727,7 @@
 			this.priceBox1.Name = "priceBox1";
 			this.priceBox1.Size = new System.Drawing.Size(107, 20);
 			this.priceBox1.TabIndex = 14;
+			this.priceBox1.TextChanged += new System.EventHandler(this.priceBox1_TextChanged);
 			// 
 			// priceLabel
 			// 
@@ -762,13 +778,6 @@
 			this.salesNameLabel.Size = new System.Drawing.Size(82, 13);
 			this.salesNameLabel.TabIndex = 26;
 			this.salesNameLabel.Text = "Sales Associate";
-			// 
-			// salesNameBox
-			// 
-			this.salesNameBox.Location = new System.Drawing.Point(386, 40);
-			this.salesNameBox.Name = "salesNameBox";
-			this.salesNameBox.Size = new System.Drawing.Size(287, 20);
-			this.salesNameBox.TabIndex = 25;
 			// 
 			// deleteQuoteButton
 			// 
@@ -840,11 +849,21 @@
 			this.custNameLabel.Text = "IBM Corporation";
 			this.custNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// salesNameBox
+			// 
+			this.salesNameBox.BackColor = System.Drawing.SystemColors.Control;
+			this.salesNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.salesNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.salesNameBox.Location = new System.Drawing.Point(386, 40);
+			this.salesNameBox.Name = "salesNameBox";
+			this.salesNameBox.Size = new System.Drawing.Size(287, 16);
+			this.salesNameBox.TabIndex = 25;
+			// 
 			// EmployeeInterface
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(404, 402);
+			this.ClientSize = new System.Drawing.Size(1100, 618);
 			this.Controls.Add(this.customerInfoBox);
 			this.Controls.Add(this.quoteGroupBox);
 			this.Controls.Add(this.searchGroupBox);
@@ -891,8 +910,7 @@
         private System.Windows.Forms.Button submitQuoteButton;
         private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.TextBox emailBox;
-        private System.Windows.Forms.Label salesNameLabel;
-        private System.Windows.Forms.TextBox salesNameBox;
+		private System.Windows.Forms.Label salesNameLabel;
         private System.Windows.Forms.Label discountLabel;
         private System.Windows.Forms.TextBox discountBox;
         private System.Windows.Forms.TextBox noteBox1;
@@ -937,6 +955,7 @@
         private System.Windows.Forms.Button itemButtonR3;
         private System.Windows.Forms.Button itemButtonR2;
         private System.Windows.Forms.Button noteButtonR3;
-        private System.Windows.Forms.Button noteButtonR2;
+		private System.Windows.Forms.Button noteButtonR2;
+		private System.Windows.Forms.TextBox salesNameBox;
     }
 }

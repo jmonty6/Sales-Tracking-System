@@ -10,6 +10,37 @@ namespace EmployeeInterface
     {
         private string description;
         private int price;
+		private int id = 0;
+		private int quoteId = 0;
+
+		public Item(int idd, int qid, string desc, int prc)
+		{
+			id = idd;
+			quoteId = qid;
+			description = desc;
+			price = prc;
+		}
+
+		public Item(string desc, int prc)
+		{
+			description = desc;
+			price = prc;
+		}
+
+		public Item()
+		{
+
+		}
+
+		public int getId()
+		{
+			return id;
+		}
+
+		public int getQID()
+		{
+			return quoteId;
+		}
 
         public string getDescription()
         {

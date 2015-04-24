@@ -38,11 +38,43 @@ namespace EmployeeInterface
 		public void selectQuote(Quote quote)
         {
 			activeQuote = quote;
+			getQuoteItems();
         }
 
-		public void submitQuote(string[] itemList, int[] priceList, string quoteName, string email, string salesPersonName, int discount, bool sanctioned)
+		public void submitQuote(List<Item> itemList, string quoteName, string email, int discount, bool sanctioned)
         {
+			//string for mysql query
+			string query;
+			MySqlCommand cmd;
+			int sanct;
 
+			//connect to the db
+			if (this.connect())
+			{
+				for (int i = 0; i < itemList.Count; i++)
+				{
+					if (itemList[i].getId() != 0)
+					{
+						query = "UPDATE item SET description='" + itemList[i].getDescription() + "',price='" + itemList[i].getPrice() + "' WHERE id='" + itemList[i].getId()+"'";
+						cmd = new MySqlCommand(query, connection);
+						cmd.ExecuteNonQuery();
+					}
+					else
+					{
+						query = "INSERT INTO item (price,description,qid) VALUES (" + itemList[i].getPrice() + ",'" + itemList[i].getDescription() + "','" +activeQuote.getId() +"')";
+						cmd = new MySqlCommand(query, connection);
+						cmd.ExecuteNonQuery();
+					}
+				}
+				if (sanctioned)
+					sanct = 1;
+				else
+					sanct = 0;
+				query = "UPDATE quote SET name='" + quoteName + "',email='" + email + "',discount='" + discount + "',sanctioned='" + sanct + "' WHERE id='" + activeQuote.getId() + "'";
+				cmd = new MySqlCommand(query, connection);
+				cmd.ExecuteNonQuery();
+			}
+			this.stopConnection();
         }
 
 		//function: bool connect()
@@ -78,9 +110,6 @@ namespace EmployeeInterface
 			//query
 			string query = "SELECT * FROM quote";
 
-			//list for results
-			List<string> rs = new List<string>();
-
 			//connect to the db and retrieve the data
 			if (this.connect())
 			{
@@ -105,9 +134,6 @@ namespace EmployeeInterface
 			//query
 			string query = "SELECT * FROM quote";
 
-			//list for results
-			List<string> rs = new List<string>();
-
 			//connect to the db and retrieve the data
 			if (this.connect())
 			{
@@ -122,6 +148,49 @@ namespace EmployeeInterface
 				}
 				dr.Close();
 			}
+			this.stopConnection();
+		}
+
+		//Function: void getQuoteItems()
+		//Purpose:  retrieves the items for the active quote from the db and places them in the quote
+ 		private void getQuoteItems()
+		{
+			List<Item> items = new List<Item>();
+			string query = "SELECT * FROM item WHERE qid = " + activeQuote.getId();
+
+			//connect to the db and retrieve the data
+			if (this.connect())
+			{
+				//execute the query
+				MySqlCommand cmd = new MySqlCommand(query, connection);
+				MySqlDataReader dr = cmd.ExecuteReader();
+				while (dr.Read())
+				{
+					items.Add(new Item(dr.GetInt32(0), dr.GetInt32(3), dr["description"] + "", dr.GetInt32(2)));
+				}
+				dr.Close();
+			}
+
+			activeQuote.setQuoteItems(items);
+
+			this.stopConnection();
+		}
+
+		public Quote getActiveQuote()
+		{
+			return activeQuote;
+		}
+
+		public void deleteItem(Item item)
+		{
+			string query = "DELETE FROM item WHERE id='" + item.getId() + "'";
+
+			if (this.connect())
+			{
+				MySqlCommand cmd = new MySqlCommand(query, connection);
+				cmd.ExecuteNonQuery();
+			}
+
 			this.stopConnection();
 		}
     }
