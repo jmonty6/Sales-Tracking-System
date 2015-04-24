@@ -55,6 +55,7 @@ namespace EmployeeInterface
 				Dispose();
 			}
 			 */
+
 		}
 
         // Searches for a quote by customer name
@@ -100,11 +101,17 @@ namespace EmployeeInterface
         // Displays the quote information for the selected quote
 		private void selectQuoteButton_Click(object sender, EventArgs e)
 		{
+            // if a quote has been selected
+
             if(selectQuoteBox.SelectedIndex > -1)
             {
+                // call quote sanctioner to select the quote
+
                 qs.selectQuote(quoteList[selectQuoteBox.SelectedIndex]);
 
-                customerInfoBox.Visible = true;
+                // make the rest of the form visible
+
+                //customerInfoBox.Visible = true;
                 quoteGroupBox.Visible = true;
 				quoteNameBox.Text = qs.getActiveQuote().getName();
 				discountBox.Text = qs.getActiveQuote().getDiscount() + "";
@@ -112,9 +119,12 @@ namespace EmployeeInterface
 				totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 
 				//copy over the quote's item list into this item list
+
 				itemList = qs.getActiveQuote().getItemList();
 				fillItemBoxText();
 				itemCount = itemList.Count;
+
+                // resize window
 
                 this.Width = 1130;
                 this.Height = 670;

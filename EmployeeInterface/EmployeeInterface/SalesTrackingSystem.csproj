@@ -67,11 +67,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppPicker.Designer.cs">
+      <DependentUpon>AppPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Authentication.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Authentication.Designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminInterface.Designer.cs">
+      <DependentUpon>AdminInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeInterface2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeInterface2.Designer.cs">
+      <DependentUpon>EmployeeInterface2.cs</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="Quote.cs" />
@@ -85,6 +103,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdminInterface.resx">
+      <DependentUpon>AdminInterface.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
     </EmbeddedResource>
