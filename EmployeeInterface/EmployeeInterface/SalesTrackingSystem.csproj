@@ -112,6 +112,9 @@
     <EmbeddedResource Include="EmployeeInterface.resx">
       <DependentUpon>EmployeeInterface.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeInterface2.resx">
+      <DependentUpon>EmployeeInterface2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -1,0 +1,3 @@
+C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\bin\Debug\EmployeeInterface.exe.config
+C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.exe
+C:\Users\Joe\Documents\Visual Studio 2013\Projects\Sales-Tracking-System\EmployeeInterface\EmployeeInterface\obj\Debug\EmployeeInterface.pdb
