@@ -12,7 +12,6 @@ namespace EmployeeInterface
 		private int quoteId;
         private string quoteName;
         private string email;
-		private string salesPersonName;
         private int salesPersonId;
         private int discount;
         private int totalPrice;
@@ -50,11 +49,6 @@ namespace EmployeeInterface
 
             itemList = iList;
             noteList = sNotes;
-        }
-
-        public void fillItemList(List<TextBox> itemBoxList, List<TextBox> priceBoxList)
-        {
-
         }
 
 		public string getName()

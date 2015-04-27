@@ -128,7 +128,7 @@ namespace EmployeeInterface
 		}
 
 		//Function: void getAllQuoteNames(name)
-		//Purpose:  retrieves all of the quotes from the db via quote name
+		//Purpose:  retrieves all of the quotes from the db via quote name00.
 		private void getAllQuoteNames(string name)
 		{
 			//query

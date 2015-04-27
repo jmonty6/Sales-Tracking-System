@@ -141,8 +141,7 @@ namespace EmployeeInterface
             // put each box's value into variables to pass to QuoteSanctioner
 
 			string quoteName = quoteNameBox.Text;
-			string email = emailBox.Text;
-			string salesPersonName = salesNameBox.Text;
+            string email = emailBox.Text;
 			int discount = Int32.Parse(discountBox.Text);
 			bool sanctioned = SanctionBox.Checked;
 			
