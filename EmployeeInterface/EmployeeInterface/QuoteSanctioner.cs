@@ -41,7 +41,7 @@ namespace EmployeeInterface
 			getQuoteItems();
         }
 
-		public void submitQuote(List<Item> itemList, string quoteName, string email, int discount, bool sanctioned)
+		public void submitQuote(List<Item> itemList, string quoteName, string email, int discount, bool sanctioned, List<string> notes)
         {
 			//string for mysql query
 			string query;
@@ -70,9 +70,20 @@ namespace EmployeeInterface
 					sanct = 1;
 				else
 					sanct = 0;
-				query = "UPDATE quote SET name='" + quoteName + "',email='" + email + "',discount='" + discount + "',sanctioned='" + sanct + "' WHERE id='" + activeQuote.getId() + "'";
+				query = "UPDATE quote SET name='" + quoteName + "',email='" + email + "',discount='" + discount + "',total='" + activeQuote.getTotalPrice() + "',sanctioned='" + sanct + "' WHERE id='" + activeQuote.getId() + "'";
 				cmd = new MySqlCommand(query, connection);
 				cmd.ExecuteNonQuery();
+
+				//insert secret notes into the db
+				for (int i = 0; i < notes.Count; i++)
+				{
+					if (notes[i] != "")
+					{
+						query = "INSERT INTO secretnotes (note,qid) VALUES ('" + notes[i] + "','" + activeQuote.getId() + "')";
+						cmd = new MySqlCommand(query, connection);
+						cmd.ExecuteNonQuery();
+					}
+				}
 			}
 			this.stopConnection();
         }
@@ -144,7 +155,7 @@ namespace EmployeeInterface
 				{
 					//create new quotes using the data read
 					if ((dr["name"] + "").Contains(name))
-						quoteList.Add(new Quote(dr.GetInt32(0), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6), dr.GetInt32(7)));
+						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6)));
 				}
 				dr.Close();
 			}
@@ -184,6 +195,41 @@ namespace EmployeeInterface
 		public void deleteItem(Item item)
 		{
 			string query = "DELETE FROM item WHERE id='" + item.getId() + "'";
+
+			if (this.connect())
+			{
+				MySqlCommand cmd = new MySqlCommand(query, connection);
+				cmd.ExecuteNonQuery();
+			}
+
+			this.stopConnection();
+		}
+
+		public void getSecretNotes()
+		{
+			string query = "SELECT * FROM secretnotes WHERE qid='" + activeQuote.getId() + "'";
+			List<string> notes = new List<string>();
+			List<int> ids = new List<int>();
+
+			if (this.connect())
+			{
+				MySqlCommand cmd = new MySqlCommand(query, connection);
+				MySqlDataReader dr = cmd.ExecuteReader();
+				while (dr.Read())
+				{
+					notes.Add(dr["note"] + "");
+					ids.Add(dr.GetInt32(2));
+				}
+			}
+			activeQuote.setNotes(notes);
+			activeQuote.setNoteIds(ids);
+
+			this.stopConnection();
+		}
+
+		public void deleteQuote(Quote quote)
+		{
+			string query = "DELETE FROM quote WHERE id='" + quote.getId() + "'";
 
 			if (this.connect())
 			{

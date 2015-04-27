@@ -20,6 +20,7 @@ namespace EmployeeInterface
         private string customerName;
 
         private List<string> noteList;
+		private List<int> noteIds;
         private List<Item> itemList;
 
 		public Quote(int id, string qName, string custName, string em, int sId, int disc, int tPrice, int sanct)
@@ -82,9 +83,19 @@ namespace EmployeeInterface
 			return discount;
 		}
 
+		public void setDiscount(int disc)
+		{
+			discount = disc;
+		}
+
 		public int getTotalPrice()
 		{
-			return totalPrice;
+			totalPrice = 0;
+			for (int i = 0; i < itemList.Count; i++)
+			{
+				totalPrice += itemList[i].getPrice();
+			}
+			return totalPrice - discount;
 		}
 		
 		public bool getSanctioned()
@@ -100,6 +111,26 @@ namespace EmployeeInterface
 		public void setQuoteItems(List<Item> items)
 		{
 			itemList = items;
+		}
+
+		public void setNotes(List<string> notes)
+		{
+			noteList = notes;
+		}
+
+		public List<string> getNotes()
+		{
+			return noteList;
+		}
+
+		public void setNoteIds(List<int> notes)
+		{
+			noteIds = notes;
+		}
+
+		public List<int> getNoteIds()
+		{
+			return noteIds;
 		}
     }
 }

@@ -61,6 +61,8 @@ namespace EmployeeInterface
         // Searches for a quote by customer name
 		private void customerSearchButton_Click(object sender, EventArgs e)
 		{
+			selectQuoteBox.DataSource = null;
+			selectQuoteBox.Update();
             // Pass the value in the customer search box to QuoteSanctioner
 			quoteNames = new List<string>();
 
@@ -81,6 +83,8 @@ namespace EmployeeInterface
         // Searches for a quote by quote name
 		private void quoteSearchButton_Click(object sender, EventArgs e)
 		{
+			selectQuoteBox.DataSource = null;
+			selectQuoteBox.Update();
 			// Pass the value in the quote search box to QuoteSanctioner
 			quoteNames = new List<string>();
 
@@ -123,6 +127,7 @@ namespace EmployeeInterface
 				itemList = qs.getActiveQuote().getItemList();
 				fillItemBoxText();
 				itemCount = itemList.Count;
+				fillSecretNotes();
 
                 // resize window
 
@@ -142,7 +147,6 @@ namespace EmployeeInterface
 
 			string quoteName = quoteNameBox.Text;
 			string email = emailBox.Text;
-			string salesPersonName = salesNameBox.Text;
 			int discount = Int32.Parse(discountBox.Text);
 			bool sanctioned = SanctionBox.Checked;
 			
@@ -152,7 +156,13 @@ namespace EmployeeInterface
 			for (int i = itemList.Count; i < itemCount; i++)
 				itemList.Add(new Item(itemBoxList[i].Text, Int32.Parse(priceBoxList[i].Text)));
 
-			qs.submitQuote(itemList, quoteName, email, discount, sanctioned);
+			//make a note list and add the text from the text boxes to it
+			List<string> notes = new List<string>();
+			notes.Add(noteBox1.Text);
+			notes.Add(noteBox2.Text);
+			notes.Add(noteBox3.Text);
+
+			qs.submitQuote(itemList, quoteName, email, discount, sanctioned, notes);
 
 			MessageBox.Show("Quote submitted successfully.");
 		}
@@ -179,6 +189,7 @@ namespace EmployeeInterface
 						itemButton2.Visible = true;
 						itemButtonR2.Visible = true;
 						itemButton1.Visible = false;
+						label4.Visible = true;
 						break;
 					case 2:
 						itemBox3.Text = qs.getActiveQuote().getItemList()[i].getDescription();
@@ -189,6 +200,7 @@ namespace EmployeeInterface
 						itemButtonR3.Visible = true;
 						itemButton2.Visible = false;
 						itemButtonR2.Visible = false;
+						label5.Visible = true;
 						break;
 					case 3:
 						itemBox4.Text = qs.getActiveQuote().getItemList()[i].getDescription();
@@ -199,6 +211,7 @@ namespace EmployeeInterface
 						itemButtonR4.Visible = true;
 						itemButton3.Visible = false;
 						itemButtonR3.Visible = false;
+						label6.Visible = true;
 						break;
 					case 4:
 						itemBox5.Text = qs.getActiveQuote().getItemList()[i].getDescription();
@@ -209,6 +222,7 @@ namespace EmployeeInterface
 						itemButtonR5.Visible = true;
 						itemButton4.Visible = false;
 						itemButtonR4.Visible = false;
+						label7.Visible = true;
 						break;
 					case 5:
 						itemBox6.Text = qs.getActiveQuote().getItemList()[i].getDescription();
@@ -219,6 +233,7 @@ namespace EmployeeInterface
 						itemButtonR6.Visible = true;
 						itemButton5.Visible = false;
 						itemButtonR5.Visible = false;
+						label8.Visible = true;
 						break;
 					case 6:
 						itemBox7.Text = qs.getActiveQuote().getItemList()[i].getDescription();
@@ -229,6 +244,7 @@ namespace EmployeeInterface
 						itemButtonR7.Visible = true;
 						itemButton6.Visible = false;
 						itemButtonR6.Visible = false;
+						label9.Visible = true;
 						break;
 					case 7:
 						itemBox8.Text = qs.getActiveQuote().getItemList()[i].getDescription();
@@ -238,6 +254,7 @@ namespace EmployeeInterface
 						itemButtonR8.Visible = true;
 						itemButton7.Visible = false;
 						itemButtonR7.Visible = false;
+						label10.Visible = true;
 						break;
 					default:
 						break;
@@ -273,6 +290,40 @@ namespace EmployeeInterface
 			}
 		}
 
+		//fills the secret note boxes with notes from the db
+		private void fillSecretNotes()
+		{
+			qs.getSecretNotes();
+			for (int i = 0; i < qs.getActiveQuote().getNotes().Count; i++)
+			{
+				switch (i)
+				{
+					case 0:
+						noteBox1.Text = qs.getActiveQuote().getNotes()[0];
+						noteBox2.Visible = true;
+						noteButton2.Visible = true;
+						noteButtonR2.Visible = true;
+						noteButton1.Visible = false;
+						break;
+					case 1:
+						noteBox2.Text = qs.getActiveQuote().getNotes()[1];
+						noteBox3.Visible = true;
+						noteButtonR3.Visible = true;
+						noteButton2.Visible = false;
+						noteButtonR2.Visible = false;
+						break;
+					case 2:
+						noteBox3.Text = qs.getActiveQuote().getNotes()[2];
+						noteButton2.Visible = false;
+						noteButtonR2.Visible = false;
+						noteButtonR3.Visible = false;
+						break;
+					default:
+						break;
+				}
+			}
+		}
+
         // These methods are for each + / - button to change visibility on the required fields
 
         private void itemButton1_Click(object sender, EventArgs e)
@@ -283,6 +334,7 @@ namespace EmployeeInterface
             itemButtonR2.Visible = true;
 
 			itemButton1.Visible = false;
+			label4.Visible = true;
 			itemCount++;
 			itemList.Add(new Item());
         }
@@ -296,6 +348,7 @@ namespace EmployeeInterface
 
             itemButton2.Visible = false;
 			itemButtonR2.Visible = false;
+			label5.Visible = true;
 			itemCount++;
 			itemList.Add(new Item());
         }
@@ -309,6 +362,7 @@ namespace EmployeeInterface
 
             itemButton3.Visible = false;
 			itemButtonR3.Visible = false;
+			label6.Visible = true;
 			itemCount++;
 			itemList.Add(new Item());
         }
@@ -322,6 +376,7 @@ namespace EmployeeInterface
 
             itemButton4.Visible = false;
 			itemButtonR4.Visible = false;
+			label7.Visible = true;
 			itemCount++;
 			itemList.Add(new Item());
         }
@@ -335,6 +390,7 @@ namespace EmployeeInterface
 
             itemButton5.Visible = false;
 			itemButtonR5.Visible = false;
+			label8.Visible = true;
 			itemCount++;
 			itemList.Add(new Item());
         }
@@ -348,6 +404,7 @@ namespace EmployeeInterface
 
             itemButton6.Visible = false;
 			itemButtonR6.Visible = false;
+			label9.Visible = true;
 			itemCount++;
 			itemList.Add(new Item());
         }
@@ -360,6 +417,7 @@ namespace EmployeeInterface
 
             itemButton7.Visible = false;
 			itemButtonR7.Visible = false;
+			label10.Visible = true;
 			itemCount++;
 			itemList.Add(new Item());
         }
@@ -374,6 +432,7 @@ namespace EmployeeInterface
 			itemButtonR2.Visible = false;
 
 			itemButton1.Visible = true;
+			label4.Visible = false;
 
 			//remove item from list and db
 
@@ -393,6 +452,7 @@ namespace EmployeeInterface
 
             itemButton2.Visible = true;
 			itemButtonR2.Visible = true;
+			label5.Visible = false;
 			itemCount--;
 			qs.deleteItem(itemList[itemCount]);
 			itemList.RemoveAt(itemCount);
@@ -409,6 +469,7 @@ namespace EmployeeInterface
 
             itemButton3.Visible = true;
 			itemButtonR3.Visible = true;
+			label6.Visible = false;
 			itemCount--;
 			qs.deleteItem(itemList[itemCount]);
 			itemList.RemoveAt(itemCount);
@@ -425,6 +486,7 @@ namespace EmployeeInterface
 
             itemButton4.Visible = true;
 			itemButtonR4.Visible = true;
+			label7.Visible = false;
 			itemCount--;
 			qs.deleteItem(itemList[itemCount]);
 			itemList.RemoveAt(itemCount);
@@ -441,6 +503,7 @@ namespace EmployeeInterface
 
             itemButton5.Visible = true;
 			itemButtonR5.Visible = true;
+			label8.Visible = false;
 			itemCount--;
 			qs.deleteItem(itemList[itemCount]);
 			itemList.RemoveAt(itemCount);
@@ -457,6 +520,7 @@ namespace EmployeeInterface
 
             itemButton6.Visible = true;
 			itemButtonR6.Visible = true;
+			label9.Visible = false;
 			itemCount--;
 			qs.deleteItem(itemList[itemCount]);
 			itemList.RemoveAt(itemCount);
@@ -472,6 +536,7 @@ namespace EmployeeInterface
 
             itemButton7.Visible = true;
 			itemButtonR7.Visible = true;
+			label10.Visible = false;
 			itemCount--;
 			qs.deleteItem(itemList[itemCount]);
 			itemList.RemoveAt(itemCount);
@@ -558,41 +623,69 @@ namespace EmployeeInterface
 		private void priceBox1_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[0].Text = priceBox1.Text;
+			itemList[0].setPrice(Int32.Parse(priceBox1.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 		}
 
 		private void priceBox2_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[1].Text = priceBox2.Text;
+			itemList[1].setPrice(Int32.Parse(priceBox2.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 		}
 
 		private void priceBox3_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[2].Text = priceBox3.Text;
+			itemList[2].setPrice(Int32.Parse(priceBox3.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 		}
 
 		private void priceBox4_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[3].Text = priceBox4.Text;
+			itemList[3].setPrice(Int32.Parse(priceBox4.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 		}
 
 		private void priceBox5_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[4].Text = priceBox5.Text;
+			itemList[4].setPrice(Int32.Parse(priceBox5.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 		}
 
 		private void priceBox6_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[5].Text = priceBox6.Text;
+			itemList[5].setPrice(Int32.Parse(priceBox6.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 		}
 
 		private void priceBox7_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[6].Text = priceBox7.Text;
+			itemList[6].setPrice(Int32.Parse(priceBox7.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
 		}
 
 		private void priceBox8_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[7].Text = priceBox8.Text;
+			itemList[7].setPrice(Int32.Parse(priceBox8.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+		}
+
+		private void discountBox_TextChanged(object sender, EventArgs e)
+		{
+			qs.getActiveQuote().setDiscount(Int32.Parse(discountBox.Text));
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+		}
+
+		private void deleteQuoteButton_Click(object sender, EventArgs e)
+		{
+			if (MessageBox.Show("Are you sure you want to delete this quote?", "Confirm deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+				qs.deleteQuote(qs.getActiveQuote());
 		}
 	}
 }
