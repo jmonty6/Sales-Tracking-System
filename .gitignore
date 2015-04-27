@@ -14,6 +14,15 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+*.exe
+*.pdb
+*.manifest
+*.dll
+*.config
+*.cache
+*.resources
+*.txt
+
 # Windows shortcuts
 *.lnk
 

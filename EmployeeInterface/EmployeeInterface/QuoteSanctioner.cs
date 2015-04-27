@@ -131,7 +131,7 @@ namespace EmployeeInterface
 				{
 					//create new quotes using the data read
 					if ((dr["custName"] + "").Contains(name))
-						quoteList.Add(new Quote(dr.GetInt32(0), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6), dr.GetInt32(7)));
+						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6)));
 				}
 				dr.Close();
 			}
