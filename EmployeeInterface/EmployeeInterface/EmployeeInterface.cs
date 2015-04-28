@@ -56,7 +56,7 @@ namespace EmployeeInterface
 		private void customerSearchButton_Click(object sender, EventArgs e)
 		{
 			quoteNames.Clear();
-			selectQuoteBox.Update();
+			selectQuoteBox.DataSource = null;
 
 			if (customerSearchBox.Text != "")
 			{
@@ -77,7 +77,7 @@ namespace EmployeeInterface
 		private void quoteSearchButton_Click(object sender, EventArgs e)
 		{
 			quoteNames.Clear();
-			selectQuoteBox.Update();
+			selectQuoteBox.DataSource = null;
 
 			if (quoteSearchBox.Text != "")
 			{

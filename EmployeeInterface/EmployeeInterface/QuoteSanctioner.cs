@@ -118,6 +118,7 @@ namespace EmployeeInterface
 		//Purpose:  retrieves all of the quotes from the db via customer name
 		private void getAllQuotes(string name)
 		{
+			quoteList.Clear();
             string query = "SELECT * FROM quote";
 
 			//connect to the db and retrieve the data
@@ -129,7 +130,7 @@ namespace EmployeeInterface
 				while (dr.Read())
 				{
 					//create new quotes using the data read
-					if ((dr["custName"] + "").Contains(name))
+					if ((dr["custName"] + "").Contains(name) && dr.GetFloat(6) != 1)
 						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetFloat(4), dr.GetFloat(5), dr.GetFloat(6)));
 				}
 				dr.Close();
@@ -141,6 +142,7 @@ namespace EmployeeInterface
 		//Purpose:  retrieves all of the quotes from the db via quote name00.
 		private void getAllQuoteNames(string name)
 		{
+			quoteList.Clear();
 			//query
 			string query = "SELECT * FROM quote";
 
@@ -153,7 +155,7 @@ namespace EmployeeInterface
 				while (dr.Read())
 				{
 					//create new quotes using the data read
-					if ((dr["name"] + "").Contains(name))
+					if ((dr["name"] + "").Contains(name) && dr.GetFloat(6) != 1)
 						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetFloat(4), dr.GetFloat(5), dr.GetFloat(6)));
 				}
 				dr.Close();
@@ -166,7 +168,7 @@ namespace EmployeeInterface
  		private void getQuoteItems()
 		{
 			List<Item> items = new List<Item>();
-			string query = "SELECT * FROM item WHERE qid = " + activeQuote.getId();
+			string query = "SELECT * FROM item WHERE qid = '" + activeQuote.getId() + "'";
 
 			//connect to the db and retrieve the data
 			if (this.connect())
