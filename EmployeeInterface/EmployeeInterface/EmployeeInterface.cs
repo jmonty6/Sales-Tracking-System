@@ -22,7 +22,7 @@ namespace EmployeeInterface
 		private int itemCount = 0;
 		private int[] priceList;
 		private List<Quote> quoteList = new List<Quote>();
-		private List<string> quoteNames;
+		private List<string> quoteNames = new List<string>();
 
 		private QuoteSanctioner qs = new QuoteSanctioner();
 
@@ -55,10 +55,8 @@ namespace EmployeeInterface
         // Searches for a quote by customer name
 		private void customerSearchButton_Click(object sender, EventArgs e)
 		{
-			selectQuoteBox.DataSource = null;
+			quoteNames.Clear();
 			selectQuoteBox.Update();
-            // Pass the value in the customer search box to QuoteSanctioner
-			quoteNames = new List<string>();
 
 			if (customerSearchBox.Text != "")
 			{
@@ -78,10 +76,8 @@ namespace EmployeeInterface
         // Searches for a quote by quote name
 		private void quoteSearchButton_Click(object sender, EventArgs e)
 		{
-			selectQuoteBox.DataSource = null;
+			quoteNames.Clear();
 			selectQuoteBox.Update();
-			// Pass the value in the quote search box to QuoteSanctioner
-			quoteNames = new List<string>();
 
 			if (quoteSearchBox.Text != "")
 			{
