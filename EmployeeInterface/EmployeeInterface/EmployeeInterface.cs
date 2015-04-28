@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 namespace EmployeeInterface
 {
@@ -64,7 +65,8 @@ namespace EmployeeInterface
 				quoteList = qs.searchCustomer(customerSearchBox.Text);
 				for (int i = 0; i < quoteList.Count; i++)
 				{
-					quoteNames.Add("" + quoteList[i].getCustName() + " : " + quoteList[i].getName());
+					if (!quoteList[i].getSanctioned())
+						quoteNames.Add("" + quoteList[i].getCustName() + " : " + quoteList[i].getName());
 				}
 			}
 			else
@@ -86,7 +88,8 @@ namespace EmployeeInterface
 				quoteList = qs.searchQuote(quoteSearchBox.Text);
 				for (int i = 0; i < quoteList.Count; i++)
 				{
-					quoteNames.Add("" + quoteList[i].getCustName() + " : " + quoteList[i].getName());
+					if (!quoteList[i].getSanctioned())
+						quoteNames.Add("" + quoteList[i].getCustName() + " : " + quoteList[i].getName());
 				}
 			}
 			else
@@ -154,10 +157,30 @@ namespace EmployeeInterface
 			//make a note list and add the text from the text boxes to it
 			List<string> notes = new List<string>();
 			notes.Add(noteBox1.Text);
-			notes.Add(noteBox2.Text);
-			notes.Add(noteBox3.Text);
+			if (noteBox2.Text != "")
+				notes.Add(noteBox2.Text);
+			if (noteBox3.Text != "")
+				notes.Add(noteBox3.Text);
 
 			qs.submitQuote(itemList, quoteName, email, discount, sanctioned, notes);
+
+			if (sanctioned)
+			{
+				MailMessage mail = new MailMessage();
+				SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+
+				mail.From = new MailAddress("salestracking467@gmail.com");
+				mail.To.Add(email);
+				mail.Subject = "Order Confirmation";
+				mail.Body = "Your sales quote with id: " + qs.getActiveQuote().getId() + " has been sanctioned and is ready to be made into a purchase order. Your total for the order is: $" 
+							+ (qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount());
+
+				smtpServer.Port = 587;
+				smtpServer.Credentials = new System.Net.NetworkCredential("salestracking467", "salestracking123");
+				smtpServer.EnableSsl = true;
+
+				smtpServer.Send(mail);
+			}
 
 			MessageBox.Show("Quote submitted successfully.");
 		}
@@ -618,69 +641,114 @@ namespace EmployeeInterface
 		private void priceBox1_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[0].Text = priceBox1.Text;
-			itemList[0].setPrice(Int32.Parse(priceBox1.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox1.Text) < Int32.MaxValue)
+				itemList[0].setPrice(Int32.Parse(priceBox1.Text));
+			else
+			{
+				priceBox1.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox2_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[1].Text = priceBox2.Text;
-			itemList[1].setPrice(Int32.Parse(priceBox2.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox2.Text) < Int32.MaxValue)
+				itemList[1].setPrice(Int32.Parse(priceBox2.Text));
+			else
+			{
+				priceBox2.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox3_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[2].Text = priceBox3.Text;
-			itemList[2].setPrice(Int32.Parse(priceBox3.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox3.Text) < Int32.MaxValue)
+				itemList[2].setPrice(Int32.Parse(priceBox3.Text));
+			else
+			{
+				priceBox3.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox4_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[3].Text = priceBox4.Text;
-			itemList[3].setPrice(Int32.Parse(priceBox4.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox4.Text) < Int32.MaxValue)
+				itemList[3].setPrice(Int32.Parse(priceBox4.Text));
+			else
+			{
+				priceBox4.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox5_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[4].Text = priceBox5.Text;
-			itemList[4].setPrice(Int32.Parse(priceBox5.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox5.Text) < Int32.MaxValue)
+				itemList[4].setPrice(Int32.Parse(priceBox5.Text));
+			else
+			{
+				priceBox5.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox6_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[5].Text = priceBox6.Text;
-			itemList[5].setPrice(Int32.Parse(priceBox6.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox6.Text) < Int32.MaxValue)
+				itemList[5].setPrice(Int32.Parse(priceBox6.Text));
+			else
+			{
+				priceBox6.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox7_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[6].Text = priceBox7.Text;
-			itemList[6].setPrice(Int32.Parse(priceBox7.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox7.Text) < Int32.MaxValue)
+				itemList[6].setPrice(Int32.Parse(priceBox7.Text));
+			else
+			{
+				priceBox7.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox8_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[7].Text = priceBox8.Text;
-			itemList[7].setPrice(Int32.Parse(priceBox8.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+			if (Int64.Parse(priceBox8.Text) < Int32.MaxValue)
+				itemList[7].setPrice(Int32.Parse(priceBox8.Text));
+			else
+			{
+				priceBox8.Text = Int32.MaxValue + "";
+				MessageBox.Show("Value exceeds max.");
+			}
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void discountBox_TextChanged(object sender, EventArgs e)
 		{
-			qs.getActiveQuote().setDiscount(Int32.Parse(discountBox.Text));
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
-		}
-
-		private void deleteQuoteButton_Click(object sender, EventArgs e)
-		{
-			if (MessageBox.Show("Are you sure you want to delete this quote?", "Confirm deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
-				qs.deleteQuote(qs.getActiveQuote());
+			if (Int32.Parse(discountBox.Text) < qs.getActiveQuote().getTotalPrice())
+				qs.getActiveQuote().setDiscount(Int32.Parse(discountBox.Text));
+			else
+				MessageBox.Show("Discount must be lower than the total price.");
+			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 	}
 }

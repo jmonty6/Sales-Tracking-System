@@ -91,6 +91,7 @@
     <Compile Include="EmployeeInterface2.Designer.cs">
       <DependentUpon>EmployeeInterface2.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeMaintainer.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Quote.cs" />
     <Compile Include="quoteDB.cs" />

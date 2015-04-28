@@ -226,18 +226,5 @@ namespace EmployeeInterface
 
 			this.stopConnection();
 		}
-
-		public void deleteQuote(Quote quote)
-		{
-			string query = "DELETE FROM quote WHERE id='" + quote.getId() + "'";
-
-			if (this.connect())
-			{
-				MySqlCommand cmd = new MySqlCommand(query, connection);
-				cmd.ExecuteNonQuery();
-			}
-
-			this.stopConnection();
-		}
     }
 }

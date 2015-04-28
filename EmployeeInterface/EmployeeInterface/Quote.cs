@@ -87,9 +87,12 @@ namespace EmployeeInterface
 			totalPrice = 0;
 			for (int i = 0; i < itemList.Count; i++)
 			{
-				totalPrice += itemList[i].getPrice();
+				if (totalPrice < Int32.MaxValue)
+					totalPrice += itemList[i].getPrice();
+				else
+					totalPrice = Int32.MaxValue;
 			}
-			return totalPrice - discount;
+			return totalPrice;
 		}
 		
 		public bool getSanctioned()
