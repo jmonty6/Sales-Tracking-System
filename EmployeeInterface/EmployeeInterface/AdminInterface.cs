@@ -88,7 +88,7 @@ namespace EmployeeInterface
 		{
 			if (addNew)
 			{
-				SalesPerson sp = new SalesPerson(nameBox.Text, Int32.Parse(idBox.Text), passwordBox.Text, Int32.Parse(commissionBox.Text), addressBox.Text);
+				SalesPerson sp = new SalesPerson(nameBox.Text, Int32.Parse(idBox.Text), passwordBox.Text, float.Parse(commissionBox.Text), addressBox.Text);
 				em.addSalesPerson(sp);
 				addNew = false;
 				MessageBox.Show("Successfully added " + sp.getName());
@@ -99,7 +99,7 @@ namespace EmployeeInterface
 				em.getCurrentSalesPerson().setName(nameBox.Text);
 				em.getCurrentSalesPerson().setPassword(passwordBox.Text);
 				em.getCurrentSalesPerson().setId(Int32.Parse(idBox.Text));
-				em.getCurrentSalesPerson().setCommission(Int32.Parse(commissionBox.Text));
+				em.getCurrentSalesPerson().setCommission(float.Parse(commissionBox.Text));
 				em.updateSalesPerson(em.getCurrentSalesPerson());
 				MessageBox.Show("Successfully updated " + em.getCurrentSalesPerson().getName());
 			}

@@ -31,11 +31,20 @@ namespace EmployeeInterface
             return activeQuote;
         }
 
-        public string convertQuote(int discount)
+        public string convertQuote(float discount)
         {
             // send datagram to processing system
 
-            Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            UdpClient client = new UdpClient("blitz.cs.niu.edu", 4446);
+
+            string send_msg = activeQuote.getId() + ":" + activeQuote.getCustName() + ":" + (activeQuote.getTotalPrice() - discount);
+            byte[] send_buffer = Encoding.ASCII.GetBytes(send_msg);
+
+            client.Send(send_buffer, send_buffer.Length);
+
+            // receive response from processing system
+
+            string recv_msg;
 
             string hostname = "blitz.cs.niu.edu";
 
@@ -43,19 +52,7 @@ namespace EmployeeInterface
             IPAddress serverAddress = hostEntry.AddressList[0];
             IPEndPoint endPoint = new IPEndPoint(serverAddress, 4446);
 
-            string send_msg = activeQuote.getId() + ":" + activeQuote.getCustName() + ":" + activeQuote.getTotalPrice();
-            byte[] send_buffer = Encoding.ASCII.GetBytes(send_msg);
-
-            sock.SendTo(send_buffer, endPoint);
-
-            // receive response from processing system
-
-            string recv_msg;
-
-            UdpClient client = new UdpClient(4446);
-            IPEndPoint server = new IPEndPoint(IPAddress.Any, 4446);
-
-            byte[] recv_buffer = client.Receive(ref server);
+            byte[] recv_buffer = client.Receive(ref endPoint);
             recv_msg = Encoding.ASCII.GetString(recv_buffer);
 
             return recv_msg;

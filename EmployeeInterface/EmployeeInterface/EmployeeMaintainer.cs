@@ -34,7 +34,7 @@ namespace EmployeeInterface
 				MySqlDataReader dr = cmd.ExecuteReader();
 				while (dr.Read())
 				{
-					empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetInt32(1), dr["address"] + ""));
+					empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
 				}
 			}
 
@@ -54,7 +54,7 @@ namespace EmployeeInterface
 				while (dr.Read())
 				{
 					if ((dr["name"] + "").Contains(name))
-						empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetInt32(1), dr["address"] + ""));
+						empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
 				}
 			}
 

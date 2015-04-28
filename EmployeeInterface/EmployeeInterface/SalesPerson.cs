@@ -11,7 +11,7 @@ namespace EmployeeInterface
 		private string name;
 		private int id;
 		private string password;
-		private int commission;
+		private float commission;
 		private string address;
 
 		public SalesPerson()
@@ -19,7 +19,7 @@ namespace EmployeeInterface
 
 		}
 
-		public SalesPerson(string nm, int nid, string pw, int comm, string add)
+		public SalesPerson(string nm, int nid, string pw, float comm, string add)
 		{
 			name = nm;
 			id = nid;
@@ -43,7 +43,7 @@ namespace EmployeeInterface
 			return password;
 		}
 
-		public int getCommission()
+		public float getCommission()
 		{
 			return commission;
 		}
@@ -68,7 +68,7 @@ namespace EmployeeInterface
 			password = pw;
 		}
 
-		public void setCommission(int comm)
+		public void setCommission(float comm)
 		{
 			commission = comm;
 		}

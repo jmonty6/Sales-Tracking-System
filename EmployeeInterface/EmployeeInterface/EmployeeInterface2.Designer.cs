@@ -194,6 +194,7 @@
             this.discountBox.Name = "discountBox";
             this.discountBox.Size = new System.Drawing.Size(107, 20);
             this.discountBox.TabIndex = 49;
+            this.discountBox.TextChanged += new System.EventHandler(this.discountBox_TextChanged);
             // 
             // label1
             // 

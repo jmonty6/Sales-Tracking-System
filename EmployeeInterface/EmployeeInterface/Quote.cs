@@ -13,8 +13,8 @@ namespace EmployeeInterface
         private string quoteName;
         private string email;
         private int salesPersonId;
-        private int discount;
-        private int totalPrice;
+        private float discount;
+        private float totalPrice;
         private bool sanctioned;
         private string customerName;
 
@@ -22,7 +22,7 @@ namespace EmployeeInterface
 		private List<int> noteIds;
         private List<Item> itemList;
 
-		public Quote(int id, string qName, string custName, string em, int sId, int disc, int tPrice, int sanct)
+		public Quote(int id, string qName, string custName, string em, int sId, float disc, float tPrice, float sanct)
 		{
 			quoteId = id;
 			quoteName = qName;
@@ -37,7 +37,7 @@ namespace EmployeeInterface
 			customerName = custName;
 		}
 
-        public Quote(string qName, string em, int sId, int disc, int tPrice, bool sanct, 
+        public Quote(string qName, string em, int sId, float disc, float tPrice, bool sanct, 
             string custName, List<string> sNotes, List<Item> iList)
         {
             quoteName = qName;
@@ -72,33 +72,33 @@ namespace EmployeeInterface
 			return quoteId;
 		}
 
-		public int getDiscount()
+		public float getDiscount()
 		{
 			return discount;
 		}
 
-		public void setDiscount(int disc)
+		public void setDiscount(float disc)
 		{
 			discount = disc;
 		}
 
-		public int getCurrentTotalPrice()
+		public float getCurrentTotalPrice()
 		{
            
 			totalPrice = 0;
 
 			for (int i = 0; i < itemList.Count; i++)
 			{
-				if (totalPrice < Int32.MaxValue)
+				if (totalPrice < float.MaxValue)
 					totalPrice += itemList[i].getPrice();
 				else
-					totalPrice = Int32.MaxValue;
+					totalPrice = float.MaxValue;
 			}
             
 			return totalPrice;
 		}
 
-        public int getTotalPrice()
+        public float getTotalPrice()
         {
             return totalPrice;
         }

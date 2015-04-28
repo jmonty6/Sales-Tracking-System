@@ -113,9 +113,9 @@ namespace EmployeeInterface
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            int disc;
+            float disc;
 
-            Int32.TryParse(discountBox.Text, out disc);
+            float.TryParse(discountBox.Text, out disc);
             
             if(disc >= qc.getActiveQuote().getTotalPrice())
             {
@@ -127,6 +127,23 @@ namespace EmployeeInterface
                 MessageBox.Show(msg);
                 qc.submitQuote();
             }
+        }
+
+        private void discountBox_TextChanged(object sender, EventArgs e)
+        {
+            float discount;
+            float.TryParse(discountBox.Text, out discount);
+
+            if (discount < qc.getActiveQuote().getTotalPrice())
+            {
+                qc.getActiveQuote().setDiscount(discount);
+            }
+            else
+            {
+                MessageBox.Show("Discount must be lower than the total price.");
+            }
+
+            totalPriceBox.Text = qc.getActiveQuote().getTotalPrice() - qc.getActiveQuote().getDiscount() + "";
         }
     }
 }

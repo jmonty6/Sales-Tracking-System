@@ -9,11 +9,11 @@ namespace EmployeeInterface
     class Item
     {
         private string description;
-        private int price;
+        private float price;
 		private int id = 0;
 		private int quoteId = 0;
 
-		public Item(int idd, int qid, string desc, int prc)
+		public Item(int idd, int qid, string desc, float prc)
 		{
 			id = idd;
 			quoteId = qid;
@@ -21,7 +21,7 @@ namespace EmployeeInterface
 			price = prc;
 		}
 
-		public Item(string desc, int prc)
+		public Item(string desc, float prc)
 		{
 			description = desc;
 			price = prc;
@@ -52,12 +52,12 @@ namespace EmployeeInterface
             description = desc;
         }
 
-        public int getPrice()
+        public float getPrice()
         {
             return price;
         }
 
-        public void setPrice(int pr)
+        public void setPrice(float pr)
         {
             price = pr;
         }

@@ -20,7 +20,7 @@ namespace EmployeeInterface
 
 		private List<Item> itemList = new List<Item>();
 		private int itemCount = 0;
-		private int[] priceList;
+		private float[] priceList;
 		private List<Quote> quoteList = new List<Quote>();
 		private List<string> quoteNames = new List<string>();
 
@@ -41,7 +41,7 @@ namespace EmployeeInterface
 
             // Initialize itemList and priceList
 			//itemList = new List<Item>();
-			priceList = new int[8];
+			priceList = new float[8];
 
             this.Width = 420;
             this.Height = 440;
@@ -140,14 +140,14 @@ namespace EmployeeInterface
 
 			string email = emailBox.Text;
 
-			int discount = Int32.Parse(discountBox.Text);
+			float discount = float.Parse(discountBox.Text);
 			bool sanctioned = SanctionBox.Checked;
 			
 			//clear itemList to start it fresh for submitting
 			//itemList.Clear();
 			//add items to the item list
 			for (int i = itemList.Count; i < itemCount; i++)
-				itemList.Add(new Item(itemBoxList[i].Text, Int32.Parse(priceBoxList[i].Text)));
+				itemList.Add(new Item(itemBoxList[i].Text, float.Parse(priceBoxList[i].Text)));
 
 			//make a note list and add the text from the text boxes to it
 			List<string> notes = new List<string>();
@@ -298,7 +298,7 @@ namespace EmployeeInterface
 			{
 				if (priceBoxList[i].Visible)
 				{
-					itemList[i].setPrice(Int32.Parse(priceBoxList[i].Text));
+					itemList[i].setPrice(float.Parse(priceBoxList[i].Text));
 				}
 			}
 		}
@@ -636,11 +636,15 @@ namespace EmployeeInterface
 		private void priceBox1_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[0].Text = priceBox1.Text;
-			if (Int64.Parse(priceBox1.Text) < Int32.MaxValue)
-				itemList[0].setPrice(Int32.Parse(priceBox1.Text));
+
+            float price;
+            float.TryParse(priceBox1.Text, out price);
+
+			if (price < float.MaxValue)
+                itemList[0].setPrice(price);
 			else
 			{
-				priceBox1.Text = Int32.MaxValue + "";
+				priceBox1.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -649,11 +653,15 @@ namespace EmployeeInterface
 		private void priceBox2_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[1].Text = priceBox2.Text;
-			if (Int64.Parse(priceBox2.Text) < Int32.MaxValue)
-				itemList[1].setPrice(Int32.Parse(priceBox2.Text));
+
+            float price;
+            float.TryParse(priceBox2.Text, out price);
+
+			if (price < float.MaxValue)
+                itemList[1].setPrice(price);
 			else
 			{
-				priceBox2.Text = Int32.MaxValue + "";
+				priceBox2.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -662,11 +670,15 @@ namespace EmployeeInterface
 		private void priceBox3_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[2].Text = priceBox3.Text;
-			if (Int64.Parse(priceBox3.Text) < Int32.MaxValue)
-				itemList[2].setPrice(Int32.Parse(priceBox3.Text));
+
+            float price;
+            float.TryParse(priceBox3.Text, out price);
+
+			if (price < float.MaxValue)
+                itemList[2].setPrice(price);
 			else
 			{
-				priceBox3.Text = Int32.MaxValue + "";
+				priceBox3.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -675,11 +687,15 @@ namespace EmployeeInterface
 		private void priceBox4_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[3].Text = priceBox4.Text;
-			if (Int64.Parse(priceBox4.Text) < Int32.MaxValue)
-				itemList[3].setPrice(Int32.Parse(priceBox4.Text));
+
+            float price;
+            float.TryParse(priceBox4.Text, out price);
+
+			if (price < float.MaxValue)
+                itemList[3].setPrice(price);
 			else
 			{
-				priceBox4.Text = Int32.MaxValue + "";
+				priceBox4.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -688,11 +704,15 @@ namespace EmployeeInterface
 		private void priceBox5_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[4].Text = priceBox5.Text;
-			if (Int64.Parse(priceBox5.Text) < Int32.MaxValue)
-				itemList[4].setPrice(Int32.Parse(priceBox5.Text));
+
+            float price;
+            float.TryParse(priceBox5.Text, out price);
+
+			if (price < float.MaxValue)
+                itemList[4].setPrice(price);
 			else
 			{
-				priceBox5.Text = Int32.MaxValue + "";
+				priceBox5.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -701,11 +721,15 @@ namespace EmployeeInterface
 		private void priceBox6_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[5].Text = priceBox6.Text;
-			if (Int64.Parse(priceBox6.Text) < Int32.MaxValue)
-				itemList[5].setPrice(Int32.Parse(priceBox6.Text));
+
+            float price;
+            float.TryParse(priceBox6.Text, out price);
+
+			if (price < float.MaxValue)
+                itemList[5].setPrice(price);
 			else
 			{
-				priceBox6.Text = Int32.MaxValue + "";
+				priceBox6.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -714,11 +738,15 @@ namespace EmployeeInterface
 		private void priceBox7_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[6].Text = priceBox7.Text;
-			if (Int64.Parse(priceBox7.Text) < Int32.MaxValue)
-				itemList[6].setPrice(Int32.Parse(priceBox7.Text));
+
+            float price;
+            float.TryParse(priceBox7.Text, out price);
+
+			if (price < float.MaxValue)
+				itemList[6].setPrice(price);
 			else
 			{
-				priceBox7.Text = Int32.MaxValue + "";
+				priceBox7.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -727,11 +755,15 @@ namespace EmployeeInterface
 		private void priceBox8_TextChanged(object sender, EventArgs e)
 		{
 			priceBoxList[7].Text = priceBox8.Text;
-			if (Int64.Parse(priceBox8.Text) < Int32.MaxValue)
-				itemList[7].setPrice(Int32.Parse(priceBox8.Text));
+
+            float price;
+            float.TryParse(priceBox8.Text, out price);
+
+			if (price < float.MaxValue)
+				itemList[7].setPrice(price);
 			else
 			{
-				priceBox8.Text = Int32.MaxValue + "";
+				priceBox8.Text = float.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
@@ -739,8 +771,11 @@ namespace EmployeeInterface
 
 		private void discountBox_TextChanged(object sender, EventArgs e)
 		{
-			if (Int32.Parse(discountBox.Text) < qs.getActiveQuote().getCurrentTotalPrice())
-				qs.getActiveQuote().setDiscount(Int32.Parse(discountBox.Text));
+            float discount;
+            float.TryParse(discountBox.Text, out discount);
+
+			if (discount < qs.getActiveQuote().getCurrentTotalPrice())
+				qs.getActiveQuote().setDiscount(discount);
 			else
 				MessageBox.Show("Discount must be lower than the total price.");
 			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";

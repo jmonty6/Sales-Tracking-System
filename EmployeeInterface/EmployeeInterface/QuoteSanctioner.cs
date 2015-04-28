@@ -41,7 +41,7 @@ namespace EmployeeInterface
 			getQuoteItems();
         }
 
-		public void submitQuote(List<Item> itemList, string quoteName, string email, int discount, bool sanctioned, List<string> notes)
+		public void submitQuote(List<Item> itemList, string quoteName, string email, float discount, bool sanctioned, List<string> notes)
         {
 			//string for mysql query
 			string query;
@@ -130,7 +130,7 @@ namespace EmployeeInterface
 				{
 					//create new quotes using the data read
 					if ((dr["custName"] + "").Contains(name))
-						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6)));
+						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetFloat(4), dr.GetFloat(5), dr.GetFloat(6)));
 				}
 				dr.Close();
 			}
@@ -154,7 +154,7 @@ namespace EmployeeInterface
 				{
 					//create new quotes using the data read
 					if ((dr["name"] + "").Contains(name))
-						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetInt32(4), dr.GetInt32(5), dr.GetInt32(6)));
+						quoteList.Add(new Quote(dr.GetInt32(9), dr["name"] + "", dr["custName"] + "", dr["email"] + "", dr.GetInt32(3), dr.GetFloat(4), dr.GetFloat(5), dr.GetFloat(6)));
 				}
 				dr.Close();
 			}
@@ -176,7 +176,7 @@ namespace EmployeeInterface
 				MySqlDataReader dr = cmd.ExecuteReader();
 				while (dr.Read())
 				{
-					items.Add(new Item(dr.GetInt32(0), dr.GetInt32(3), dr["description"] + "", dr.GetInt32(2)));
+					items.Add(new Item(dr.GetInt32(0), dr.GetInt32(3), dr["description"] + "", dr.GetFloat(2)));
 				}
 				dr.Close();
 			}
