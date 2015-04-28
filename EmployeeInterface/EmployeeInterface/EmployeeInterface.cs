@@ -41,7 +41,7 @@ namespace EmployeeInterface
 
             // Initialize itemList and priceList
 			//itemList = new List<Item>();
-			int[] priceList = new int[8];
+			priceList = new int[8];
 
             this.Width = 420;
             this.Height = 440;
@@ -111,12 +111,11 @@ namespace EmployeeInterface
 
                 // make the rest of the form visible
 
-                //customerInfoBox.Visible = true;
                 quoteGroupBox.Visible = true;
 				quoteNameBox.Text = qs.getActiveQuote().getName();
 				discountBox.Text = qs.getActiveQuote().getDiscount() + "";
 				emailBox.Text = qs.getActiveQuote().getEmail();
-				totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() + "";
+				totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() + "";
 
 				//copy over the quote's item list into this item list
 
@@ -173,7 +172,7 @@ namespace EmployeeInterface
 				mail.To.Add(email);
 				mail.Subject = "Order Confirmation";
 				mail.Body = "Your sales quote with id: " + qs.getActiveQuote().getId() + " has been sanctioned and is ready to be made into a purchase order. Your total for the order is: $" 
-							+ (qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount());
+							+ (qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount());
 
 				smtpServer.Port = 587;
 				smtpServer.Credentials = new System.Net.NetworkCredential("salestracking467", "salestracking123");
@@ -648,7 +647,7 @@ namespace EmployeeInterface
 				priceBox1.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox2_TextChanged(object sender, EventArgs e)
@@ -661,7 +660,7 @@ namespace EmployeeInterface
 				priceBox2.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox3_TextChanged(object sender, EventArgs e)
@@ -674,7 +673,7 @@ namespace EmployeeInterface
 				priceBox3.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox4_TextChanged(object sender, EventArgs e)
@@ -687,7 +686,7 @@ namespace EmployeeInterface
 				priceBox4.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox5_TextChanged(object sender, EventArgs e)
@@ -700,7 +699,7 @@ namespace EmployeeInterface
 				priceBox5.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox6_TextChanged(object sender, EventArgs e)
@@ -713,7 +712,7 @@ namespace EmployeeInterface
 				priceBox6.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox7_TextChanged(object sender, EventArgs e)
@@ -726,7 +725,7 @@ namespace EmployeeInterface
 				priceBox7.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void priceBox8_TextChanged(object sender, EventArgs e)
@@ -739,16 +738,16 @@ namespace EmployeeInterface
 				priceBox8.Text = Int32.MaxValue + "";
 				MessageBox.Show("Value exceeds max.");
 			}
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 
 		private void discountBox_TextChanged(object sender, EventArgs e)
 		{
-			if (Int32.Parse(discountBox.Text) < qs.getActiveQuote().getTotalPrice())
+			if (Int32.Parse(discountBox.Text) < qs.getActiveQuote().getCurrentTotalPrice())
 				qs.getActiveQuote().setDiscount(Int32.Parse(discountBox.Text));
 			else
 				MessageBox.Show("Discount must be lower than the total price.");
-			totalPriceBox.Text = qs.getActiveQuote().getTotalPrice() - qs.getActiveQuote().getDiscount() + "";
+			totalPriceBox.Text = qs.getActiveQuote().getCurrentTotalPrice() - qs.getActiveQuote().getDiscount() + "";
 		}
 	}
 }

@@ -94,7 +94,7 @@
     <Compile Include="EmployeeMaintainer.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Quote.cs" />
-    <Compile Include="quoteDB.cs" />
+    <Compile Include="QuoteConverter.cs" />
     <Compile Include="QuoteSanctioner.cs" />
     <Compile Include="EmployeeInterface.cs">
       <SubType>Form</SubType>

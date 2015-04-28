@@ -38,7 +38,16 @@
             this.customerSearchButton = new System.Windows.Forms.Button();
             this.selectQuoteBox = new System.Windows.Forms.ListBox();
             this.customerSearchBox = new System.Windows.Forms.TextBox();
+            this.submitGroupBox = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.discountLabel = new System.Windows.Forms.Label();
+            this.discountBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.totalPriceBox = new System.Windows.Forms.TextBox();
+            this.totalPriceLabel = new System.Windows.Forms.Label();
+            this.submitButton = new System.Windows.Forms.Button();
             this.searchGroupBox.SuspendLayout();
+            this.submitGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchGroupBox
@@ -76,6 +85,7 @@
             this.quoteSearchButton.TabIndex = 9;
             this.quoteSearchButton.Text = "Search";
             this.quoteSearchButton.UseVisualStyleBackColor = true;
+            this.quoteSearchButton.Click += new System.EventHandler(this.quoteSearchButton_Click);
             // 
             // quoteSearchBox
             // 
@@ -93,6 +103,7 @@
             this.selectQuoteButton.TabIndex = 5;
             this.selectQuoteButton.Text = "Select";
             this.selectQuoteButton.UseVisualStyleBackColor = true;
+            this.selectQuoteButton.Click += new System.EventHandler(this.selectQuoteButton_Click);
             // 
             // quoteSearchLabel
             // 
@@ -122,6 +133,7 @@
             this.customerSearchButton.TabIndex = 0;
             this.customerSearchButton.Text = "Search";
             this.customerSearchButton.UseVisualStyleBackColor = true;
+            this.customerSearchButton.Click += new System.EventHandler(this.customerSearchButton_Click);
             // 
             // selectQuoteBox
             // 
@@ -140,16 +152,101 @@
             this.customerSearchBox.Size = new System.Drawing.Size(260, 20);
             this.customerSearchBox.TabIndex = 2;
             // 
+            // submitGroupBox
+            // 
+            this.submitGroupBox.Controls.Add(this.label2);
+            this.submitGroupBox.Controls.Add(this.discountLabel);
+            this.submitGroupBox.Controls.Add(this.discountBox);
+            this.submitGroupBox.Controls.Add(this.label1);
+            this.submitGroupBox.Controls.Add(this.totalPriceBox);
+            this.submitGroupBox.Controls.Add(this.totalPriceLabel);
+            this.submitGroupBox.Controls.Add(this.submitButton);
+            this.submitGroupBox.Location = new System.Drawing.Point(397, 12);
+            this.submitGroupBox.Name = "submitGroupBox";
+            this.submitGroupBox.Size = new System.Drawing.Size(375, 373);
+            this.submitGroupBox.TabIndex = 15;
+            this.submitGroupBox.TabStop = false;
+            this.submitGroupBox.Text = "Submit a Purchase Order";
+            this.submitGroupBox.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(125, 181);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(16, 17);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "$";
+            // 
+            // discountLabel
+            // 
+            this.discountLabel.AutoSize = true;
+            this.discountLabel.Location = new System.Drawing.Point(140, 165);
+            this.discountLabel.Name = "discountLabel";
+            this.discountLabel.Size = new System.Drawing.Size(74, 13);
+            this.discountLabel.TabIndex = 50;
+            this.discountLabel.Text = "Final Discount";
+            // 
+            // discountBox
+            // 
+            this.discountBox.Location = new System.Drawing.Point(143, 181);
+            this.discountBox.Name = "discountBox";
+            this.discountBox.Size = new System.Drawing.Size(107, 20);
+            this.discountBox.TabIndex = 49;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(125, 128);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 17);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "$";
+            // 
+            // totalPriceBox
+            // 
+            this.totalPriceBox.BackColor = System.Drawing.SystemColors.Control;
+            this.totalPriceBox.Location = new System.Drawing.Point(143, 127);
+            this.totalPriceBox.Name = "totalPriceBox";
+            this.totalPriceBox.ReadOnly = true;
+            this.totalPriceBox.Size = new System.Drawing.Size(107, 20);
+            this.totalPriceBox.TabIndex = 47;
+            // 
+            // totalPriceLabel
+            // 
+            this.totalPriceLabel.AutoSize = true;
+            this.totalPriceLabel.Location = new System.Drawing.Point(140, 111);
+            this.totalPriceLabel.Name = "totalPriceLabel";
+            this.totalPriceLabel.Size = new System.Drawing.Size(58, 13);
+            this.totalPriceLabel.TabIndex = 46;
+            this.totalPriceLabel.Text = "Total Price";
+            // 
+            // submitButton
+            // 
+            this.submitButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.submitButton.Location = new System.Drawing.Point(150, 238);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.TabIndex = 5;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
             // EmployeeInterface2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 402);
+            this.ClientSize = new System.Drawing.Size(784, 402);
+            this.Controls.Add(this.submitGroupBox);
             this.Controls.Add(this.searchGroupBox);
             this.Name = "EmployeeInterface2";
             this.Text = "EmployeeInterface2";
             this.searchGroupBox.ResumeLayout(false);
             this.searchGroupBox.PerformLayout();
+            this.submitGroupBox.ResumeLayout(false);
+            this.submitGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -166,5 +263,13 @@
         private System.Windows.Forms.Button customerSearchButton;
         private System.Windows.Forms.ListBox selectQuoteBox;
         private System.Windows.Forms.TextBox customerSearchBox;
+        private System.Windows.Forms.GroupBox submitGroupBox;
+        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox totalPriceBox;
+        private System.Windows.Forms.Label totalPriceLabel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label discountLabel;
+        private System.Windows.Forms.TextBox discountBox;
     }
 }

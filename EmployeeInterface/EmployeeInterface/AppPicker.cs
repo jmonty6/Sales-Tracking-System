@@ -29,6 +29,7 @@ namespace EmployeeInterface
             EmployeeInterface em = new EmployeeInterface();
             this.Hide();
             em.ShowDialog();
+            Dispose();
         }
 
         private void createPOButton_Click(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace EmployeeInterface
             EmployeeInterface2 em2 = new EmployeeInterface2();
             this.Hide();
             em2.ShowDialog();
+            Dispose();
         }
 
         private void manageSAButton_Click(object sender, EventArgs e)
@@ -43,6 +45,7 @@ namespace EmployeeInterface
             AdminInterface ad = new AdminInterface();
             this.Hide();
             ad.ShowDialog();
+            Dispose();
         }
 
         private void AppPicker_Load(object sender, EventArgs e)
