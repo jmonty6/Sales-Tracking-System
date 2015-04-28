@@ -106,6 +106,9 @@
     <EmbeddedResource Include="AdminInterface.resx">
       <DependentUpon>AdminInterface.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AppPicker.resx">
+      <DependentUpon>AppPicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,11 +10,61 @@ using System.Windows.Forms;
 
 namespace EmployeeInterface
 {
+
     public partial class AppPicker : Form
     {
+        // Data Members
+
+        private bool admin = false;
+
+        // Methods
+
         public AppPicker()
         {
             InitializeComponent();
+        }
+
+        private void editQuoteButton_Click(object sender, EventArgs e)
+        {
+            EmployeeInterface em = new EmployeeInterface();
+            this.Hide();
+            em.ShowDialog();
+        }
+
+        private void createPOButton_Click(object sender, EventArgs e)
+        {
+            EmployeeInterface2 em2 = new EmployeeInterface2();
+            this.Hide();
+            em2.ShowDialog();
+        }
+
+        private void manageSAButton_Click(object sender, EventArgs e)
+        {
+            AdminInterface ad = new AdminInterface();
+            this.Hide();
+            ad.ShowDialog();
+        }
+
+        private void AppPicker_Load(object sender, EventArgs e)
+        {
+            Authentication login = new Authentication();
+            login.ShowDialog();
+
+            if (!login.isValid())
+            {
+                Dispose();
+            }
+
+            admin = login.isAdmin();
+
+            if (!admin)
+            {
+                manageSAButton.Visible = false;
+                this.Width = 354;
+                this.Height = 200;
+
+                selectLabel.Location = new Point(124, 30);
+            }
         }
     }
 }

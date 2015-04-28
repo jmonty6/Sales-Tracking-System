@@ -922,6 +922,7 @@
             this.Controls.Add(this.searchGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EmployeeInterface";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit/Sanction Quotes";
             this.Load += new System.EventHandler(this.EmployeeInterface_Load);
             this.searchGroupBox.ResumeLayout(false);

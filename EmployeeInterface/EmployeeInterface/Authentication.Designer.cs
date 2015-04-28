@@ -48,7 +48,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(78, 52);
+            this.label1.Location = new System.Drawing.Point(107, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 1;
@@ -57,7 +57,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 85);
+            this.label2.Location = new System.Drawing.Point(97, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 2;
@@ -66,7 +66,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.AcceptsTab = true;
-            this.passwordTextBox.Location = new System.Drawing.Point(127, 82);
+            this.passwordTextBox.Location = new System.Drawing.Point(156, 82);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(149, 20);
             this.passwordTextBox.TabIndex = 1;
@@ -75,7 +75,7 @@
             // idTextBox
             // 
             this.idTextBox.AcceptsTab = true;
-            this.idTextBox.Location = new System.Drawing.Point(127, 49);
+            this.idTextBox.Location = new System.Drawing.Point(156, 49);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(149, 20);
             this.idTextBox.TabIndex = 0;
@@ -91,6 +91,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginButton);
             this.Name = "Authentication";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authentication";
             this.ResumeLayout(false);
             this.PerformLayout();

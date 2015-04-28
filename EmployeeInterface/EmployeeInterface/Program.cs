@@ -16,7 +16,7 @@ namespace EmployeeInterface
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new EmployeeInterface());
+			Application.Run(new AppPicker());
 		}
 	}
 }

@@ -15,6 +15,7 @@ namespace EmployeeInterface
 	{
 		private MySqlConnection connection;
 		private bool valid = false;
+        private string admin;
 		private int counter = 0;
 
 		public Authentication()
@@ -48,7 +49,8 @@ namespace EmployeeInterface
 				//execute the query
 				MySqlCommand cmd = new MySqlCommand(query, connection);
 				MySqlDataReader dr = cmd.ExecuteReader();
-				while (dr.Read())
+				
+                while (dr.Read())
 				{
 					rs[0].Add(dr["id"] + "");
 					rs[1].Add(dr["password"] + "");
@@ -61,11 +63,19 @@ namespace EmployeeInterface
 			{
 				//validate the id and pw
 				if (rs[0][i] == idTextBox.Text && rs[1][i] == passwordTextBox.Text)
+                {
+                    admin = rs[2][i];
 					valid = true;
-				if (i < rs[0].Count - 1)
-					i++;
-				else
-					break;
+                }
+
+                if (i < rs[0].Count - 1)
+                {
+                    i++;
+                }
+                else
+                {
+                    break;
+                }
 			}
 
 			if (!valid)
@@ -124,5 +134,17 @@ namespace EmployeeInterface
 		{
 			return valid;
 		}
+
+        public bool isAdmin()
+        {
+            if(admin == "True")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 	}
 }
