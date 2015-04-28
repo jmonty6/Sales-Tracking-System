@@ -14,8 +14,8 @@ namespace EmployeeInterface
     {
         // Data Members
 
-        private List<Quote> quoteList;
-        private List<string> quoteNames;
+        private List<Quote> quoteList = new List<Quote>();
+        private List<string> quoteNames = new List<string>();
 
         private QuoteSanctioner qs = new QuoteSanctioner();
         private QuoteConverter qc = new QuoteConverter();
@@ -35,12 +35,10 @@ namespace EmployeeInterface
         {
             // clear out the quote selection box
 
+            quoteNames.Clear();
             selectQuoteBox.DataSource = null;
-            selectQuoteBox.Update();
 
             // pass the value in the customer search box to QuoteSanctioner
-
-            quoteNames = new List<string>();
 
             if (customerSearchBox.Text != "")
             {
@@ -66,12 +64,10 @@ namespace EmployeeInterface
         {
             // clear out the quote selection box
 
+            quoteNames.Clear();
             selectQuoteBox.DataSource = null;
-            selectQuoteBox.Update();
 
             // pass the value in the quote search box to QuoteSanctioner
-
-            quoteNames = new List<string>();
 
             if (quoteSearchBox.Text != "")
             {
