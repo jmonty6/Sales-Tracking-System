@@ -82,9 +82,11 @@ namespace EmployeeInterface
 			discount = disc;
 		}
 
-		public int getTotalPrice()
+		public int getCurrentTotalPrice()
 		{
+           
 			totalPrice = 0;
+
 			for (int i = 0; i < itemList.Count; i++)
 			{
 				if (totalPrice < Int32.MaxValue)
@@ -92,8 +94,14 @@ namespace EmployeeInterface
 				else
 					totalPrice = Int32.MaxValue;
 			}
+            
 			return totalPrice;
 		}
+
+        public int getTotalPrice()
+        {
+            return totalPrice;
+        }
 		
 		public bool getSanctioned()
 		{

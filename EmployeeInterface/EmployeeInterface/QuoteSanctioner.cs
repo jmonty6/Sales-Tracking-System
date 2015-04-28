@@ -118,8 +118,7 @@ namespace EmployeeInterface
 		//Purpose:  retrieves all of the quotes from the db via customer name
 		private void getAllQuotes(string name)
 		{
-			//query
-			string query = "SELECT * FROM quote";
+            string query = "SELECT * FROM quote";
 
 			//connect to the db and retrieve the data
 			if (this.connect())
