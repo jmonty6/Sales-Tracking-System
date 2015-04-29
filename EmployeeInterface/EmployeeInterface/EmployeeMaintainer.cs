@@ -28,7 +28,7 @@ namespace EmployeeInterface
 		public List<SalesPerson> searchById(int id)
 		{
 			empList.Clear();
-			string query = "SELECT s.name, s.commission, s.sid, s.address, e.password FROM employees e, salesperson s WHERE s.sid ='" + id + "' AND e.sid='" + id + "'";
+			string query = "SELECT s.name, s.commission, e.id, s.sid, s.address, e.password FROM employees e, salesperson s WHERE s.sid = e.sid AND e.id='" + id + "'";
 
 			if (this.connect())
 			{
@@ -36,7 +36,7 @@ namespace EmployeeInterface
 				MySqlDataReader dr = cmd.ExecuteReader();
 				while (dr.Read())
 				{
-					empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
+					empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr.GetInt32(3), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
 				}
 				dr.Close();
 			}
@@ -49,7 +49,7 @@ namespace EmployeeInterface
 		public List<SalesPerson> searchByName(string name)
 		{
 			empList.Clear();
-			string query = "SELECT s.name, s.commission, s.sid, s.address, e.password FROM employees e, salesperson s WHERE s.sid=e.sid";
+			string query = "SELECT s.name, s.commission, e.id, s.sid, s.address, e.password FROM employees e, salesperson s WHERE s.sid=e.sid";
 
 			if (this.connect())
 			{
@@ -58,7 +58,7 @@ namespace EmployeeInterface
 				while (dr.Read())
 				{
 					if ((dr["name"] + "").Contains(name))
-						empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
+						empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr.GetInt32(3), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
 				}
 				dr.Close();
 			}
@@ -106,13 +106,13 @@ namespace EmployeeInterface
 
 		public void deleteSalesPerson(SalesPerson sp)
 		{
-			string query = "DELETE FROM salesperson WHERE sid='" + sp.getId() + "'";
+			string query = "DELETE FROM salesperson WHERE sid='" + sp.getSId() + "'";
 
 			if (this.connect())
 			{
 				MySqlCommand cmd = new MySqlCommand(query, connection);
 				cmd.ExecuteNonQuery();
-				query = "DELETE FROM employees WHERE sid='" + sp.getId() + "'";
+				query = "DELETE FROM employees WHERE sid='" + sp.getSId() + "'";
 				cmd.CommandText = query;
 				cmd.ExecuteNonQuery();
 			}
@@ -122,15 +122,22 @@ namespace EmployeeInterface
 
 		public void addSalesPerson(SalesPerson sp)
 		{
-			string query = "INSERT INTO employees (id,password,sid) VALUES ('" + sp.getId() + "','" + sp.getPassword() + "','" + sp.getId() + "')";
-
 			if (this.connect())
 			{
+				string query = "INSERT INTO salesperson (name,commission,address) VALUES ('" + sp.getName() + "','" + sp.getCommission() + "','" + sp.getAddress() + "')";
 				MySqlCommand cmd = new MySqlCommand(query, connection);
 				cmd.ExecuteNonQuery();
-				query = "INSERT INTO salesperson (sid,name,commission,address) VALUES ('" + sp.getId() + "','" + sp.getName() + "','" + sp.getCommission() + "','" + sp.getAddress() + "')";
-				cmd.CommandText = query;
+
+                query = "SELECT sid FROM salesperson WHERE name = " + sp.getName() + ";";
+                cmd = new MySqlCommand(query, connection);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                sp.setSId(reader.GetInt32(0));
+
+                query = "INSERT INTO employees (id,password,sid) VALUES ('" + sp.getEmpId() + "','" + sp.getPassword() + "','" + sp.getSId() + "')";
+                cmd = new MySqlCommand(query, connection);
 				cmd.ExecuteNonQuery();
+
+                reader.Close();
 			}
 
 			this.stopConnection();
@@ -138,13 +145,13 @@ namespace EmployeeInterface
 
 		public void updateSalesPerson(SalesPerson sp)
 		{
-			string query = "UPDATE salesperson SET name='" + sp.getName() + "',commission='" + sp.getCommission() + "',address='" + sp.getAddress() + "' WHERE sid='" + sp.getId() + "'";
+			string query = "UPDATE salesperson SET name='" + sp.getName() + "',commission='" + sp.getCommission() + "',address='" + sp.getAddress() + "' WHERE sid='" + sp.getSId() + "'";
 
 			if (this.connect())
 			{
 				MySqlCommand cmd = new MySqlCommand(query, connection);
 				cmd.ExecuteNonQuery();
-				query = "UPDATE employees SET id='" + sp.getEmpId() + "',sid='" + sp.getId() + "',password='" + sp.getPassword() + "' WHERE sid='" + sp.getId() + "'";
+				query = "UPDATE employees SET id='" + sp.getEmpId() + "',sid='" + sp.getSId() + "',password='" + sp.getPassword() + "' WHERE sid='" + sp.getSId() + "'";
 				cmd.CommandText = query;
 				cmd.ExecuteNonQuery();
 			}

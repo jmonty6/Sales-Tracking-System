@@ -9,7 +9,7 @@ namespace EmployeeInterface
 	class SalesPerson
 	{
 		private string name;
-		private int id;
+        private int sid;
 		private string password;
 		private float commission;
 		private string address;
@@ -23,21 +23,31 @@ namespace EmployeeInterface
 		public SalesPerson(string nm, int nid, string pw, float comm, string add)
 		{
 			name = nm;
-			id = nid;
+		    empId = nid;
 			password = pw;
 			commission = comm;
 			address = add;
 		}
 
-		public string getName()
-		{
-			return name;
-		}
+        public SalesPerson(string nm, int nid, int nid2, string pw, float comm, string add)
+        {
+            name = nm;
+            empId = nid;
+            sid = nid2;
+            password = pw;
+            commission = comm;
+            address = add;
+        }
 
-		public int getId()
-		{
-			return id;
-		}
+        public string getName()
+        {
+            return name;
+        }
+
+        public int getSId()
+        {
+            return sid;
+        }
 
 		public string getPassword()
 		{
@@ -59,10 +69,10 @@ namespace EmployeeInterface
 			name = nm;
 		}
 
-		public void setId(int idd)
-		{
-			id = idd;
-		}
+        public void setSId(int idd)
+        {
+            sid = idd;
+        }
 
 		public void setPassword(string pw)
 		{

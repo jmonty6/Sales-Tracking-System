@@ -298,7 +298,9 @@ namespace EmployeeInterface
 			{
 				if (priceBoxList[i].Visible)
 				{
-					itemList[i].setPrice(float.Parse(priceBoxList[i].Text));
+                    float price;
+                    float.TryParse(priceBoxList[i].Text, out price);
+					itemList[i].setPrice(price);
 				}
 			}
 		}

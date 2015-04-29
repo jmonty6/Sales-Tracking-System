@@ -64,7 +64,7 @@ namespace EmployeeInterface
 				nameBox.Text = em.getCurrentSalesPerson().getName();
 				addressBox.Text = em.getCurrentSalesPerson().getAddress();
 				passwordBox.Text = em.getCurrentSalesPerson().getPassword();
-				idBox.Text = em.getCurrentSalesPerson().getId() + "";
+				idBox.Text = em.getCurrentSalesPerson().getEmpId() + "";
 				commissionBox.Text = em.getCurrentSalesPerson().getCommission() + "";
 			}
 		}
