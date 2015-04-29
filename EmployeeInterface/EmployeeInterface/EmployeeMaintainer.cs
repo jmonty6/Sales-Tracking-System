@@ -15,17 +15,19 @@ namespace EmployeeInterface
 	{
 		MySqlConnection connection;
 		SalesPerson employee;
-		List<SalesPerson> empList = new List<SalesPerson>();
+		List<SalesPerson> empList;
 
 		public EmployeeMaintainer()
 		{
 			//connection string and connect to the db
 			string strConn = "port=3306;server=50.165.81.108;user id=Kevin;password=ak4iulgjMwAShNX9rWsp;database=salestracking;";
 			connection = new MySqlConnection(strConn);
+			empList = new List<SalesPerson>();
 		}
 
 		public List<SalesPerson> searchById(int id)
 		{
+			empList.Clear();
 			string query = "SELECT s.name, s.commission, s.sid, s.address, e.password FROM employees e, salesperson s WHERE s.sid ='" + id + "' AND e.sid='" + id + "'";
 
 			if (this.connect())
@@ -46,7 +48,8 @@ namespace EmployeeInterface
 
 		public List<SalesPerson> searchByName(string name)
 		{
-			string query = "SELECT s.name, s.commission, s.sid, s.address, e.password FROM employees e, salesperson s WHERE s.name='" + name + "' AND s.sid=e.sid";
+			empList.Clear();
+			string query = "SELECT s.name, s.commission, s.sid, s.address, e.password FROM employees e, salesperson s WHERE s.sid=e.sid";
 
 			if (this.connect())
 			{

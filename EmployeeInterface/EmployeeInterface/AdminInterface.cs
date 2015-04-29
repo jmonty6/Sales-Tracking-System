@@ -27,6 +27,7 @@ namespace EmployeeInterface
 		private void idSearchButton_Click(object sender, EventArgs e)
 		{
 			empNames.Clear();
+			selectBox.DataSource = null;
 
 			if (idSearchBox.Text != "")
 			{
@@ -41,6 +42,7 @@ namespace EmployeeInterface
 		private void nameSearchButton_Click(object sender, EventArgs e)
 		{
 			empNames.Clear();
+			selectBox.DataSource = null;
 
 			if (nameSearchBox.Text != "")
 			{
