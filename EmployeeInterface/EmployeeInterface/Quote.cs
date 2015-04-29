@@ -72,6 +72,11 @@ namespace EmployeeInterface
 			return quoteId;
 		}
 
+        public int getSId()
+        {
+            return salesPersonId;
+        }
+
 		public float getDiscount()
 		{
 			return discount;
@@ -101,6 +106,11 @@ namespace EmployeeInterface
         public float getTotalPrice()
         {
             return totalPrice;
+        }
+
+        public void setTotalPrice(float price)
+        {
+            totalPrice = price;
         }
 		
 		public bool getSanctioned()

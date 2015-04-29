@@ -70,7 +70,7 @@ namespace EmployeeInterface
 					sanct = 1;
 				else
 					sanct = 0;
-				query = "UPDATE quote SET name='" + quoteName + "',email='" + email + "',discount='" + discount + "',total='" + activeQuote.getTotalPrice() + "',sanctioned='" + sanct + "' WHERE id='" + activeQuote.getId() + "'";
+				query = "UPDATE quote SET name='" + quoteName + "',email='" + email + "',discount='" + discount + "',total='" + (activeQuote.getCurrentTotalPrice() - activeQuote.getDiscount()) + "',sanctioned='" + sanct + "' WHERE id='" + activeQuote.getId() + "'";
 				cmd = new MySqlCommand(query, connection);
 				cmd.ExecuteNonQuery();
 

@@ -14,8 +14,8 @@ namespace EmployeeInterface
     {
         // Data Members
 
-        private List<Quote> quoteList;
-        private List<string> quoteNames;
+        private List<Quote> quoteList = new List<Quote>();
+        private List<string> quoteNames = new List<string>();
 
         private QuoteSanctioner qs = new QuoteSanctioner();
         private QuoteConverter qc = new QuoteConverter();
@@ -35,16 +35,14 @@ namespace EmployeeInterface
         {
             // clear out the quote selection box
 
+            quoteNames.Clear();
             selectQuoteBox.DataSource = null;
-            selectQuoteBox.Update();
 
             // pass the value in the customer search box to QuoteSanctioner
 
-            quoteNames = new List<string>();
-
             if (customerSearchBox.Text != "")
             {
-                quoteList = qs.searchCustomer(customerSearchBox.Text);
+                quoteList = qc.searchCustomer(customerSearchBox.Text);
 
                 for (int i = 0; i < quoteList.Count; i++)
                 {
@@ -66,20 +64,18 @@ namespace EmployeeInterface
         {
             // clear out the quote selection box
 
+            quoteNames.Clear();
             selectQuoteBox.DataSource = null;
-            selectQuoteBox.Update();
 
             // pass the value in the quote search box to QuoteSanctioner
 
-            quoteNames = new List<string>();
-
             if (quoteSearchBox.Text != "")
             {
-                quoteList = qs.searchQuote(quoteSearchBox.Text);
+                quoteList = qc.searchQuote(quoteSearchBox.Text);
 
                 for (int i = 0; i < quoteList.Count; i++)
                 {
-                    if (!quoteList[i].getSanctioned())
+                    if (quoteList[i].getSanctioned())
                     {
                         quoteNames.Add("" + quoteList[i].getCustName() + " : " + quoteList[i].getName());
                     }
@@ -123,9 +119,12 @@ namespace EmployeeInterface
             }
             else
             {
+                qc.getActiveQuote().setTotalPrice(float.Parse(totalPriceBox.Text));
+
                 string msg = qc.convertQuote(disc);
                 MessageBox.Show(msg);
-                qc.submitQuote();
+
+                qc.submitQuote(msg);
             }
         }
 
