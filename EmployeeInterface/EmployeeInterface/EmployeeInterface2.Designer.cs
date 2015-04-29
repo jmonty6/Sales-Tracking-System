@@ -243,6 +243,7 @@
             this.Controls.Add(this.submitGroupBox);
             this.Controls.Add(this.searchGroupBox);
             this.Name = "EmployeeInterface2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EmployeeInterface2";
             this.searchGroupBox.ResumeLayout(false);
             this.searchGroupBox.PerformLayout();
