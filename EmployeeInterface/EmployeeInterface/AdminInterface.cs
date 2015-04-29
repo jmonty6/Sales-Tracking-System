@@ -98,7 +98,7 @@ namespace EmployeeInterface
 				em.getCurrentSalesPerson().setAddress(addressBox.Text);
 				em.getCurrentSalesPerson().setName(nameBox.Text);
 				em.getCurrentSalesPerson().setPassword(passwordBox.Text);
-				em.getCurrentSalesPerson().setId(Int32.Parse(idBox.Text));
+				em.getCurrentSalesPerson().setEmpId(Int32.Parse(idBox.Text));
 				em.getCurrentSalesPerson().setCommission(float.Parse(commissionBox.Text));
 				em.updateSalesPerson(em.getCurrentSalesPerson());
 				MessageBox.Show("Successfully updated " + em.getCurrentSalesPerson().getName());

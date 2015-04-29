@@ -36,6 +36,7 @@ namespace EmployeeInterface
 				{
 					empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
 				}
+				dr.Close();
 			}
 
 			this.stopConnection();
@@ -56,6 +57,7 @@ namespace EmployeeInterface
 					if ((dr["name"] + "").Contains(name))
 						empList.Add(new SalesPerson(dr["name"] + "", dr.GetInt32(2), dr["password"] + "", dr.GetFloat(1), dr["address"] + ""));
 				}
+				dr.Close();
 			}
 
 			this.stopConnection();
@@ -139,7 +141,7 @@ namespace EmployeeInterface
 			{
 				MySqlCommand cmd = new MySqlCommand(query, connection);
 				cmd.ExecuteNonQuery();
-				query = "UPDATE employees SET id='" + sp.getId() + "',sid='" + sp.getId() + "',password='" + sp.getPassword() + "' WHERE sid='" + sp.getId() + "'";
+				query = "UPDATE employees SET id='" + sp.getEmpId() + "',sid='" + sp.getId() + "',password='" + sp.getPassword() + "' WHERE sid='" + sp.getId() + "'";
 				cmd.CommandText = query;
 				cmd.ExecuteNonQuery();
 			}

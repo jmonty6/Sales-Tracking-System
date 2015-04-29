@@ -13,6 +13,7 @@ namespace EmployeeInterface
 		private string password;
 		private float commission;
 		private string address;
+		private int empId;
 
 		public SalesPerson()
 		{
@@ -76,6 +77,16 @@ namespace EmployeeInterface
 		public void setAddress(string add)
 		{
 			address = add;
+		}
+
+		public void setEmpId(int idd)
+		{
+			empId = idd;
+		}
+
+		public int getEmpId()
+		{
+			return empId;
 		}
 	}
 }
